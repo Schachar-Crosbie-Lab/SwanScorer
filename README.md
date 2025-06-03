@@ -30,11 +30,11 @@ Our first step is to prepare your raw SWAN data.
 
     <div>
 
-    <table style="width:78%;">
+    <table style="width:67%;">
     <colgroup>
-    <col style="width: 25%" />
-    <col style="width: 26%" />
-    <col style="width: 26%" />
+    <col style="width: 22%" />
+    <col style="width: 22%" />
+    <col style="width: 22%" />
     </colgroup>
     <thead>
     <tr>
@@ -56,7 +56,7 @@ Our first step is to prepare your raw SWAN data.
     <p>2 = Female</p></td>
     </tr>
     <tr>
-    <td>pa rent_respondent</td>
+    <td>p_respondent</td>
     <td>Whether the survey was filled out by the parent or the child</td>
     <td><p>1 = Parent Respondent</p>
     <p>0 = Child / Youth Self Respondent</p></td>
@@ -99,8 +99,8 @@ Our first step is to prepare your raw SWAN data.
     </tr>
     <tr>
     <td>swan8</td>
-    <td>8. Ignore extraneous stimuli (able to ignore background n o i
-    se/distractions)</td>
+    <td>8. Ignore extraneous stimuli (able to ignore background n o i s e /
+    distractions)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>

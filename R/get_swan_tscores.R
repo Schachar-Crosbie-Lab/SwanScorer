@@ -27,8 +27,7 @@ get_swan_tscores <- function(file = NULL, output_folder = NULL) {
   check <- clean_file(file)
   summary <- build_summary(check)
   score <- run_model(summary) |>
-    dplyr::select(-age18, female, youth) |>
-    dplyr::rename(parent_respondent = p_respondent)
+    dplyr::select(-age18, female, youth)
 
   if(!is.null(output_folder)){
 

@@ -10,7 +10,7 @@
 globalVariables(c("value",
                   'swan1','swan2','swan3','swan4','swan5','swan6','swan7','swan8','swan9',
                   'swan10','swan11','swan12','swan13','swan14','swan15','swan16','swan17','swan18',
-                  'age','gender','parent_respondent',
+                  'age','gender','p_respondent',
                   'age18','female','youth','p_respondent'))
 
 #### clean_file function ####
@@ -45,7 +45,7 @@ clean_file <- function(file_path = NULL) {
   required_test_cols <- c('swan1','swan2','swan3','swan4','swan5','swan6','swan7','swan8','swan9',
                      'swan10','swan11','swan12','swan13','swan14','swan15','swan16','swan17','swan18')
 
-  required_dem_cols <- c('age','gender','parent_respondent')
+  required_dem_cols <- c('age','gender','p_respondent')
 
   if(!all(c(required_test_cols,required_dem_cols) %in% colnames(df))){
 
@@ -84,8 +84,8 @@ clean_file <- function(file_path = NULL) {
   }
 
   # Check gender
-  if(!any(unique(df$parent_respondent) %in% c('1','0', NA) )){
-    stop(paste("It appears as though some of your parent_respondent values are formatted incorrectly. Parent respondent should be coded as... \n",
+  if(!any(unique(df$p_respondent) %in% c('1','0', NA) )){
+    stop(paste("It appears as though some of your p_respondent values are formatted incorrectly. Parent respondent should be coded as... \n",
                "1 = Parent Respondent \n",
                "0 = Child/Youth Self-Report \n"))
   }
@@ -194,8 +194,7 @@ build_summary <- function(df = NULL) {
                                             gender == 2 ~ 1)) |>
     dplyr::mutate(youth = dplyr::case_when(age < 12 ~ 0,
                                            age >= 12 ~ 1,
-                                           T ~ NA)) |>
-    dplyr::rename(p_respondent = parent_respondent)
+                                           T ~ NA))
 
   #Whole test scores
   df_tot <- cbind(df_tot, mkpro(dat = df, a = 1, b = 18))

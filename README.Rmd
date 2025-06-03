@@ -42,127 +42,141 @@ Our first step is to prepare your raw SWAN data.
     following columns are necessary for the model. If age, gender, or
     parent_respondent are missing from a row, the model will not return
     a t-score for that row.
-    
+
     <div>
 
-    +-----------------+------------------+------------------+
-    | Column Name     | Additional       | Values           |
-    |                 | Information      |                  |
-    +=================+==================+==================+
-    | age             | The child's age  | 5 - 18           |
-    +-----------------+------------------+------------------+
-    | gender          | The child's      | 1 = Male         |
-    |                 | gender           |                  |
-    |                 |                  | 2 = Female       |
-    +-----------------+------------------+------------------+
-    | pa              | Whether the      | 1 = Parent       |
-    | rent_respondent | survey was       | Respondent       |
-    |                 | filled out by    |                  |
-    |                 | the parent or    | 0 = Child /      |
-    |                 | the child        | Youth Self       |
-    |                 |                  | Respondent       |
-    +-----------------+------------------+------------------+
-    | swan1           | 1\. Give close   | -3 (Far Below)   |
-    |                 | attention to     | to 3 (Far Above) |
-    |                 | detail and avoid |                  |
-    |                 | careless         |                  |
-    |                 | mistakes         |                  |
-    +-----------------+------------------+------------------+
-    | swan2           | 2\. Sustain      | -3 (Far Below)   |
-    |                 | attention on     | to 3 (Far Above) |
-    |                 | tasks and play   |                  |
-    |                 | activities       |                  |
-    +-----------------+------------------+------------------+
-    | swan3           | 3\. Listen when  | -3 (Far Below)   |
-    |                 | spoken to        | to 3 (Far Above) |
-    |                 | directly         |                  |
-    +-----------------+------------------+------------------+
-    | swan4           | 4\. Follow       | -3 (Far Below)   |
-    |                 | through on       | to 3 (Far Above) |
-    |                 | instructions and |                  |
-    |                 | finish           |                  |
-    |                 | schoolwork /     |                  |
-    |                 | chores           |                  |
-    +-----------------+------------------+------------------+
-    | swan5           | 5\. Organize     | -3 (Far Below)   |
-    |                 | tasks and        | to 3 (Far Above) |
-    |                 | activities       |                  |
-    +-----------------+------------------+------------------+
-    | swan6           | 6\. Engage in    | -3 (Far Below)   |
-    |                 | tasks that       | to 3 (Far Above) |
-    |                 | require          |                  |
-    |                 | sustained mental |                  |
-    |                 | effort           |                  |
-    +-----------------+------------------+------------------+
-    | swan7           | 7\. Keep track   | -3 (Far Below)   |
-    |                 | of things        | to 3 (Far Above) |
-    |                 | necessary for    |                  |
-    |                 | activities       |                  |
-    +-----------------+------------------+------------------+
-    | swan8           | 8\. Ignore       | -3 (Far Below)   |
-    |                 | extraneous       | to 3 (Far Above) |
-    |                 | stimuli (able to |                  |
-    |                 | ignore           |                  |
-    |                 | background n o   |                  |
-    |                 | i                |                  |
-    |                 | se/distractions) |                  |
-    +-----------------+------------------+------------------+
-    | swan9           | 9\. Remember     | -3 (Far Below)   |
-    |                 | daily activities | to 3 (Far Above) |
-    +-----------------+------------------+------------------+
-    | swan10          | 10\. Sit still   | -3 (Far Below)   |
-    |                 | (control         | to 3 (Far Above) |
-    |                 | movements of     |                  |
-    |                 | hands / feet or  |                  |
-    |                 | control          |                  |
-    |                 | squirming)       |                  |
-    +-----------------+------------------+------------------+
-    | swan11          | 11\. Stay seated | -3 (Far Below)   |
-    |                 | (when required   | to 3 (Far Above) |
-    |                 | by class rules / |                  |
-    |                 | social           |                  |
-    |                 | conventions)     |                  |
-    +-----------------+------------------+------------------+
-    | swan12          | 12\. Modulate    | -3 (Far Below)   |
-    |                 | motor activity   | to 3 (Far Above) |
-    |                 | (inhibit         |                  |
-    |                 | inappropriate    |                  |
-    |                 | running /        |                  |
-    |                 | climbing)        |                  |
-    +-----------------+------------------+------------------+
-    | swan13          | 13\. Play        | -3 (Far Below)   |
-    |                 | quietly (keep    | to 3 (Far Above) |
-    |                 | noise level      |                  |
-    |                 | reasonable)      |                  |
-    +-----------------+------------------+------------------+
-    | swan14          | 14\. Settle down | -3 (Far Below)   |
-    |                 | and rest         | to 3 (Far Above) |
-    |                 | (control         |                  |
-    |                 | constant         |                  |
-    |                 | activity)        |                  |
-    +-----------------+------------------+------------------+
-    | swan15          | 15\. Modulate    | -3 (Far Below)   |
-    |                 | verbal activity  | to 3 (Far Above) |
-    |                 | (control excess  |                  |
-    |                 | talking)         |                  |
-    +-----------------+------------------+------------------+
-    | swan16          | 16\. Reflect on  | -3 (Far Below)   |
-    |                 | questions        | to 3 (Far Above) |
-    |                 | (control         |                  |
-    |                 | blurting out     |                  |
-    |                 | answers)         |                  |
-    +-----------------+------------------+------------------+
-    | swan17          | 17\. Await turn  | -3 (Far Below)   |
-    |                 | (stand in line   | to 3 (Far Above) |
-    |                 | and take turns)  |                  |
-    +-----------------+------------------+------------------+
-    | swan18          | 18\. Enter into  | -3 (Far Below)   |
-    |                 | conversations    | to 3 (Far Above) |
-    |                 | and games        |                  |
-    |                 | (control         |                  |
-    |                 | interrupting /   |                  |
-    |                 | intruding)       |                  |
-    +-----------------+------------------+------------------+
+    +---------------+---------------+---------------+
+    | Column Name   | Additional    | Values        |
+    |               | Information   |               |
+    +===============+===============+===============+
+    | age           | The child's   | 5 - 18        |
+    |               | age           |               |
+    +---------------+---------------+---------------+
+    | gender        | The child's   | 1 = Male      |
+    |               | gender        |               |
+    |               |               | 2 = Female    |
+    +---------------+---------------+---------------+
+    | p_respondent  | Whether the   | 1 = Parent    |
+    |               | survey was    | Respondent    |
+    |               | filled out by |               |
+    |               | the parent or | 0 = Child /   |
+    |               | the child     | Youth Self    |
+    |               |               | Respondent    |
+    +---------------+---------------+---------------+
+    | swan1         | 1\. Give      | -3 (Far       |
+    |               | close         | Below) to 3   |
+    |               | attention to  | (Far Above)   |
+    |               | detail and    |               |
+    |               | avoid         |               |
+    |               | careless      |               |
+    |               | mistakes      |               |
+    +---------------+---------------+---------------+
+    | swan2         | 2\. Sustain   | -3 (Far       |
+    |               | attention on  | Below) to 3   |
+    |               | tasks and     | (Far Above)   |
+    |               | play          |               |
+    |               | activities    |               |
+    +---------------+---------------+---------------+
+    | swan3         | 3\. Listen    | -3 (Far       |
+    |               | when spoken   | Below) to 3   |
+    |               | to directly   | (Far Above)   |
+    +---------------+---------------+---------------+
+    | swan4         | 4\. Follow    | -3 (Far       |
+    |               | through on    | Below) to 3   |
+    |               | instructions  | (Far Above)   |
+    |               | and finish    |               |
+    |               | schoolwork /  |               |
+    |               | chores        |               |
+    +---------------+---------------+---------------+
+    | swan5         | 5\. Organize  | -3 (Far       |
+    |               | tasks and     | Below) to 3   |
+    |               | activities    | (Far Above)   |
+    +---------------+---------------+---------------+
+    | swan6         | 6\. Engage in | -3 (Far       |
+    |               | tasks that    | Below) to 3   |
+    |               | require       | (Far Above)   |
+    |               | sustained     |               |
+    |               | mental effort |               |
+    +---------------+---------------+---------------+
+    | swan7         | 7\. Keep      | -3 (Far       |
+    |               | track of      | Below) to 3   |
+    |               | things        | (Far Above)   |
+    |               | necessary for |               |
+    |               | activities    |               |
+    +---------------+---------------+---------------+
+    | swan8         | 8\. Ignore    | -3 (Far       |
+    |               | extraneous    | Below) to 3   |
+    |               | stimuli (able | (Far Above)   |
+    |               | to ignore     |               |
+    |               | background n  |               |
+    |               | o i s e       |               |
+    |               | /             |               |
+    |               | distractions) |               |
+    +---------------+---------------+---------------+
+    | swan9         | 9\. Remember  | -3 (Far       |
+    |               | daily         | Below) to 3   |
+    |               | activities    | (Far Above)   |
+    +---------------+---------------+---------------+
+    | swan10        | 10\. Sit      | -3 (Far       |
+    |               | still         | Below) to 3   |
+    |               | (control      | (Far Above)   |
+    |               | movements of  |               |
+    |               | hands / feet  |               |
+    |               | or control    |               |
+    |               | squirming)    |               |
+    +---------------+---------------+---------------+
+    | swan11        | 11\. Stay     | -3 (Far       |
+    |               | seated (when  | Below) to 3   |
+    |               | required by   | (Far Above)   |
+    |               | class rules / |               |
+    |               | social        |               |
+    |               | conventions)  |               |
+    +---------------+---------------+---------------+
+    | swan12        | 12\. Modulate | -3 (Far       |
+    |               | motor         | Below) to 3   |
+    |               | activity      | (Far Above)   |
+    |               | (inhibit      |               |
+    |               | inappropriate |               |
+    |               | running /     |               |
+    |               | climbing)     |               |
+    +---------------+---------------+---------------+
+    | swan13        | 13\. Play     | -3 (Far       |
+    |               | quietly (keep | Below) to 3   |
+    |               | noise level   | (Far Above)   |
+    |               | reasonable)   |               |
+    +---------------+---------------+---------------+
+    | swan14        | 14\. Settle   | -3 (Far       |
+    |               | down and rest | Below) to 3   |
+    |               | (control      | (Far Above)   |
+    |               | constant      |               |
+    |               | activity)     |               |
+    +---------------+---------------+---------------+
+    | swan15        | 15\. Modulate | -3 (Far       |
+    |               | verbal        | Below) to 3   |
+    |               | activity      | (Far Above)   |
+    |               | (control      |               |
+    |               | excess        |               |
+    |               | talking)      |               |
+    +---------------+---------------+---------------+
+    | swan16        | 16\. Reflect  | -3 (Far       |
+    |               | on questions  | Below) to 3   |
+    |               | (control      | (Far Above)   |
+    |               | blurting out  |               |
+    |               | answers)      |               |
+    +---------------+---------------+---------------+
+    | swan17        | 17\. Await    | -3 (Far       |
+    |               | turn (stand   | Below) to 3   |
+    |               | in line and   | (Far Above)   |
+    |               | take turns)   |               |
+    +---------------+---------------+---------------+
+    | swan18        | 18\. Enter    | -3 (Far       |
+    |               | into          | Below) to 3   |
+    |               | conversations | (Far Above)   |
+    |               | and games     |               |
+    |               | (control      |               |
+    |               | interrupting  |               |
+    |               | / intruding)  |               |
+    +---------------+---------------+---------------+
 
     </div>
 
