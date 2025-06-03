@@ -80,59 +80,122 @@ clean_file <- function(file_path = NULL) {
                "2 = Female \n"))
   }
 
-  return(list(df = df))
+  return(df = df)
 }
 
 
-#' @name summarize_swan
+
+
+
+#' @name mkvars
 #'
-#' @title Summarize Swan Scores
+#' @title Make Variables - Subset SWAN to subdomains.
 #'
-#' @description Use the dataframe from [clean_file()] to calculate totals, missingness, and pro-rated totals
+#' @author Annie
 #'
-#' @param df should be a data.frame from [clean_file()]
+#' @description Pass the root of the test with the question numbers to subset the SWAN. 1-9 = Inattentive. 10-18 = Hyperactive.
+#' Function to list all questionnaire items (and not have to type them out) - used throughout
+#' a:  first item number (usually "1", but when referencing subdomains, or for SWAN ODD, first item may be something other than 1
+#' b:  last item number
+#' root:  part of the item name that doesn't change (eg:  for swan1 to swan18, the root is "swan" )
+#'
+#' @importFrom stringr str_c
+#'
+#' @param a First question of subset
+#' @param b Last question of subset
+#' @param root Root name of
+#'
+#' @returns A data frame ready for use or an error
+mkvars <- function(a = NULL, b = NULL, root = 'swan') {
+  cnams <- NULL
+  for (i in a:b) {
+    cnams[i - a + 1] <- stringr::str_c(root, i)
+  }
+  return(cnams)
+}
+
+#' @name mkpro
+#'
+#' @title Make Prorated Scores
+#'
+#' @author Annie
+#'
+#' @description
+#' a: first item number in questionnaire (usually "1")
+# b: last item number in questionnaire
+# root: non numeric part of the item name (see calls to the function below)
+# maxmiss: minimum number of missing values that sets total and prorated total to missing
+#          WARNING: default does not set any totals or pro-rated totals to missing to leave this up to the individual analyst
+# dat: name of data frame with items - default is S2quest
+# newroot: root for new variable names if different (used for subdomain totals) - default if newroot is not specified in call to function, newroot = root
+#'
+#' @param dat should be a data.frame from [clean_file()]
 #' @param maxmiss maximum number of missing values before can be considered invalid
+#' @inheritParams mkvars
+#' @param newroot a new name if root names need to be changed
 #'
 #' @returns A data frame ready for use or an error
 #'
-#' @section Development:
-#' 20250603: Began Devlopment JC \cr
-#'
-#'
-# Make domain totals ------------------------------------------------------
+mkpro <- function(maxmiss = NA, dat = NA, a = NULL, b = NULL, root = 'swan', newroot = 'swan' ) {
 
-# Function to obtain total, number of missing values and prorated total for each questionnaire
-#
-# mkpro <- function(maxmiss = NA, df = NA) {
-#   # a: first item number in questionnaire (usually "1")
-#   # b: last item number in questionnaire
-#   # root: non numeric part of the item name (see calls to the function below)
-#   # maxmiss: minimum number of missing values that sets total and prorated total to missing
-#   #          WARNING: default does not set any totals or pro-rated totals to missing to leave this up to the individual analyst
-#   # dat: name of data frame with items - default is S2quest
-#   # newroot: root for new variable names if different (used for subdomain totals) - default if newroot is not specified in call to function, newroot = root
-#
-#   cnams <- mkvars(a, b, root)
-#   n <- length(cnams)
-#
-#   tot <- apply(dat[, cnams], 1 , sum, na.rm = T)
-#   miss <- apply(dat[, cnams], 1 , function(x)
-#     sum(is.na(x)))
-#   pro <- tot / (n - miss) * n
-#
-#   if (is.na(maxmiss))
-#     maxmiss <- n
-#
-#   pro <- ifelse(miss >= maxmiss, NA, pro)
-#   tot <- ifelse(miss >= maxmiss, NA, tot)
-#
-#   allvars <- cbind(tot, miss, pro)
-#   colnames(allvars) <-
-#     c(str_c(newroot, "_tot"),
-#       str_c(newroot, "_miss"),
-#       str_c(newroot, "_pro"))
-#   allvars
-# }
-#
-# S2quest_processed <- cbind(S2quest_processed, mkpro(1, 18, "swan"))
+
+  cnams <- mkvars(a, b, root)
+  n <- length(cnams)
+
+  tot <- apply(dat[, cnams], 1 , sum, na.rm = T)
+  miss <- apply(dat[, cnams], 1 , function(x)
+    sum(is.na(x)))
+  pro <- tot / (n - miss) * n
+
+  if (is.na(maxmiss))
+    maxmiss <- n
+
+  pro <- ifelse(miss >= maxmiss, NA, pro)
+  tot <- ifelse(miss >= maxmiss, NA, tot)
+
+  allvars <- cbind(tot, miss, pro)
+  colnames(allvars) <-
+    c(stringr::str_c(newroot, "_tot"),
+      stringr::str_c(newroot, "_miss"),
+      stringr::str_c(newroot, "_pro"))
+
+  return(allvars)
+}
+
+#' @name build_summary
+#'
+#' @title Build Totals and Prorated Totals for Full Test and Subdomains
+#'
+#' @description Use the dataframe from [clean_file()] and the [mkpro()] functionto calculate totals, missingness, and pro-rated totals
+#' for the total test and subdomains
+#'
+#' @importFrom dplyr mutate
+#' @importFrom dplyr case_when
+#'
+#' @param df should be a data.frame from [clean_file()]
+#'
+#' @returns A data frame with all of the totals columns
+#'
+build_summary <- function(df = NULL) {
+
+  df_tot <- df |>
+    dplyr::mutate(age18 = dplyr::case_when(age < 18 ~ age,
+                                           age >= 18 ~ 18,
+                                           T ~ age)) |>
+    dplyr::mutate(female = dplyr::case_when(gender == 1 ~ 0,
+                                            gender == 2 ~ 1))
+
+  #Whole test scores
+  df_tot <- cbind(df_tot, mkpro(dat = df, a = 1, b = 18))
+
+  #Inattentive
+  df_tot <- cbind(df_tot, mkpro(dat = df, a = 1, b = 9, newroot = 'swan_ia'))
+
+  #Hyperactive
+  df_tot <- cbind(df_tot, mkpro(dat = df, a = 10, b = 18, newroot = 'swan_hi'))
+
+  return(df_tot = df_tot)
+
+}
+
 
