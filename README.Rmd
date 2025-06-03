@@ -229,3 +229,12 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 ```
 
 ## Understanding the Output
+
+| Column | Description |
+|----|----|
+| swan_gender_study_tscores | A t-score across the full SWAN test with gender in the model |
+| swan_study_tscores | A t-score across the full SWAN test without gender in the model |
+| swan_ia_gender_study_tscores | A t-score of the inattentive subdomain (questions 1-9) with gender in the model |
+| swan_ia_study_tscores | A t-score of the inattentive subdomain (questions 1-9) without gender in the model |
+| swan_hi_gender_study_tscores | A t-score of the hyperactive subdomain (questions 10-18) with gender in the model |
+| swan_hi_study_tscores | A t-score of the hyperactive subdomain (questions 10-18) without gender in the model |

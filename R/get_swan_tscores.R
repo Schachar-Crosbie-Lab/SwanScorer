@@ -32,7 +32,7 @@ get_swan_tscores <- function(file = NULL, output_folder = NULL) {
   if(!is.null(output_folder)){
 
     rio::export(score,
-                file.path(output_folder,paste0('swan_scored_',format(lubridate::now(), format='%Y%m%d%H%M%S'),'.csv')))
+                file.path(output_folder,paste0('swan_scored_',format(lubridate::now(), format='%Y-%m-%d %H-%M-%S'),'.csv')))
 
     message(paste("A spreadsheet of your scored SWAN tests has been saved to",output_folder))
 
