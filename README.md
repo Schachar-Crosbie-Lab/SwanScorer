@@ -30,11 +30,11 @@ Our first step is to prepare your raw SWAN data.
 
     1.  <div>
 
-        <table style="width:90%;">
+        <table style="width:81%;">
         <colgroup>
-        <col style="width: 26%" />
-        <col style="width: 31%" />
-        <col style="width: 31%" />
+        <col style="width: 25%" />
+        <col style="width: 27%" />
+        <col style="width: 27%" />
         </colgroup>
         <thead>
         <tr>
@@ -56,7 +56,7 @@ Our first step is to prepare your raw SWAN data.
         <p>2 = Female</p></td>
         </tr>
         <tr>
-        <td>p arent_respondent</td>
+        <td>pa rent_respondent</td>
         <td>Whether the survey was filled out by the parent or the child</td>
         <td><p>1 = Parent Respondent</p>
         <p>0 = Child / Youth Self Respondent</p></td>
@@ -99,8 +99,8 @@ Our first step is to prepare your raw SWAN data.
         </tr>
         <tr>
         <td>swan8</td>
-        <td>8. Ignore extraneous stimuli (able to ignore background
-        noise/distractions)</td>
+        <td>8. Ignore extraneous stimuli (able to ignore background n o
+        ise/distractions)</td>
         <td>-3 (Far Below) to 3 (Far Above)</td>
         </tr>
         <tr>
@@ -198,6 +198,8 @@ You have the option to specify…
 2.  a folder to save a output spreadsheet with the t-scores
 
 ``` r
+library(here)
+library(SwanScorer)
 
 # Example of how to specify the input file
 swan_tscores <- get_swan_tscores(file = here("test_scores.csv"))
@@ -205,3 +207,5 @@ swan_tscores <- get_swan_tscores(file = here("test_scores.csv"))
 # Example of how to automatically save a spreadsheet
 swan_tscores <- get_swan_tscores(output_folder = here())
 ```
+
+## Understanding the Output

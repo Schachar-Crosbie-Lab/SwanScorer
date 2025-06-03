@@ -10,7 +10,8 @@
 globalVariables(c("value",
                   'swan1','swan2','swan3','swan4','swan5','swan6','swan7','swan8','swan9',
                   'swan10','swan11','swan12','swan13','swan14','swan15','swan16','swan17','swan18',
-                  'age','gender','parent_respondent'))
+                  'age','gender','parent_respondent',
+                  'age18','female','youth','p_respondent'))
 
 #### clean_file function ####
 #' @name clean_file
