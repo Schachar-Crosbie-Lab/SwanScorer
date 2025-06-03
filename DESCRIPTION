@@ -1,18 +1,18 @@
 Package: SwanScorer
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Produces SWAN T-scores
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Jane", "Doe",
-      email = "jane@example.com",
+      "Jonathan", "Clutton",
+      email = "jonathan.clutton@sickkids.ca",
       role = c("aut", "cre")
     )
   )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+Description: The Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) test is a questionnaire for assessing risk for ADHD. This packages uses the large Canadian dataset generated through the Spit for Science Study to read a spreadsheet of SWAN scores and produce a spreadsheet with t-scores.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/jclutton/SwanScorer
 BugReports: https://github.com/jclutton/SwanScorer/issues
+RoxygenNote: 7.3.2
