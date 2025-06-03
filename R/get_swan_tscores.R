@@ -1,4 +1,3 @@
-#### Create Wrapper Function ####
 #' @name get_swan_tscores
 #'
 #' @title Run analysis on SWAN raw values to return t-scores

@@ -9,7 +9,7 @@ Authors@R: c(
       role = c("aut", "cre")
     )
   )
-Description: The Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) test is a questionnaire for assessing risk for ADHD. This packages uses the large Canadian dataset generated through the Spit for Science Study to read a spreadsheet of SWAN scores and produce a spreadsheet with t-scores.
+Description: The Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) is a is a validated instrument for measuring attention-deficit/hyperactivity disorder (ADHD) traits. This package provides an easy way to automatically score SWAN tests.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

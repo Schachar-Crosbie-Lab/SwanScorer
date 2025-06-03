@@ -9,8 +9,8 @@
 
 The Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating
 Scale (SWAN) is a validated instrument for measuring
-attention-deficit/hyperactivity disorder (ADHD) traits [Burton et al.,
-2018](https://doi.org/10.1101/248484). The SwanScorer package provides
+attention-deficit/hyperactivity disorder (ADHD) traits ([Burton et al.,
+2018](https://doi.org/10.1101/248484)). The SwanScorer package provides
 an easy way to automatically score your SWAN tests.
 
 ## Instructions

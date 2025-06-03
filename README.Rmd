@@ -1,5 +1,8 @@
 ---
 output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -16,41 +19,174 @@ knitr::opts_chunk$set(
 # SwanScorer
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-The Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) is a validated instrument for measuring attention-deficit/hyperactivity disorder (ADHD) traits [Burton et al., 2018](https://doi.org/10.1101/248484). The SwanScorer package provides an easy way to automatically score your SWAN tests.
+The Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating
+Scale (SWAN) is a validated instrument for measuring
+attention-deficit/hyperactivity disorder (ADHD) traits ([Burton et al.,
+2018](https://doi.org/10.1101/248484)). The SwanScorer package provides
+an easy way to automatically score your SWAN tests.
 
+## Instructions
 
-## Installation
+### Formatting Your Data
 
-You can install the development version of SwanScorer from [GitHub](https://github.com/) with:
+Our first step is to prepare your raw SWAN data.
+
+1.  Prepare a spreadsheet, preferably a .csv file, with a row for each
+    of the tests you'd like to score.
+
+2.  Be sure the following columns are present in the spreadsheet and
+    rename the columns to match the reference guide below. All of the
+    following columns are necessary for the model. If age, gender, or
+    parent_respondent are missing from a row, the model will not return
+    a t-score for that row.
+
+    1.  <div>
+
+        +------------------+----------------------+----------------------+
+        | Column Name      | Additional           | Values               |
+        |                  | Information          |                      |
+        +==================+======================+======================+
+        | age              | The child's age      | 5 - 18               |
+        +------------------+----------------------+----------------------+
+        | gender           | The child's gender   | 1 = Male             |
+        |                  |                      |                      |
+        |                  |                      | 2 = Female           |
+        +------------------+----------------------+----------------------+
+        | p                | Whether the survey   | 1 = Parent           |
+        | arent_respondent | was filled out by    | Respondent           |
+        |                  | the parent or the    |                      |
+        |                  | child                | 0 = Child / Youth    |
+        |                  |                      | Self Respondent      |
+        +------------------+----------------------+----------------------+
+        | swan1            | 1\. Give close       | -3 (Far Below) to 3  |
+        |                  | attention to detail  | (Far Above)          |
+        |                  | and avoid careless   |                      |
+        |                  | mistakes             |                      |
+        +------------------+----------------------+----------------------+
+        | swan2            | 2\. Sustain          | -3 (Far Below) to 3  |
+        |                  | attention on tasks   | (Far Above)          |
+        |                  | and play activities  |                      |
+        +------------------+----------------------+----------------------+
+        | swan3            | 3\. Listen when      | -3 (Far Below) to 3  |
+        |                  | spoken to directly   | (Far Above)          |
+        +------------------+----------------------+----------------------+
+        | swan4            | 4\. Follow through   | -3 (Far Below) to 3  |
+        |                  | on instructions and  | (Far Above)          |
+        |                  | finish schoolwork /  |                      |
+        |                  | chores               |                      |
+        +------------------+----------------------+----------------------+
+        | swan5            | 5\. Organize tasks   | -3 (Far Below) to 3  |
+        |                  | and activities       | (Far Above)          |
+        +------------------+----------------------+----------------------+
+        | swan6            | 6\. Engage in tasks  | -3 (Far Below) to 3  |
+        |                  | that require         | (Far Above)          |
+        |                  | sustained mental     |                      |
+        |                  | effort               |                      |
+        +------------------+----------------------+----------------------+
+        | swan7            | 7\. Keep track of    | -3 (Far Below) to 3  |
+        |                  | things necessary for | (Far Above)          |
+        |                  | activities           |                      |
+        +------------------+----------------------+----------------------+
+        | swan8            | 8\. Ignore           | -3 (Far Below) to 3  |
+        |                  | extraneous stimuli   | (Far Above)          |
+        |                  | (able to ignore      |                      |
+        |                  | background           |                      |
+        |                  | noise/distractions)  |                      |
+        +------------------+----------------------+----------------------+
+        | swan9            | 9\. Remember daily   | -3 (Far Below) to 3  |
+        |                  | activities           | (Far Above)          |
+        +------------------+----------------------+----------------------+
+        | swan10           | 10\. Sit still       | -3 (Far Below) to 3  |
+        |                  | (control movements   | (Far Above)          |
+        |                  | of hands / feet or   |                      |
+        |                  | control squirming)   |                      |
+        +------------------+----------------------+----------------------+
+        | swan11           | 11\. Stay seated     | -3 (Far Below) to 3  |
+        |                  | (when required by    | (Far Above)          |
+        |                  | class rules / social |                      |
+        |                  | conventions)         |                      |
+        +------------------+----------------------+----------------------+
+        | swan12           | 12\. Modulate motor  | -3 (Far Below) to 3  |
+        |                  | activity (inhibit    | (Far Above)          |
+        |                  | inappropriate        |                      |
+        |                  | running / climbing)  |                      |
+        +------------------+----------------------+----------------------+
+        | swan13           | 13\. Play quietly    | -3 (Far Below) to 3  |
+        |                  | (keep noise level    | (Far Above)          |
+        |                  | reasonable)          |                      |
+        +------------------+----------------------+----------------------+
+        | swan14           | 14\. Settle down and | -3 (Far Below) to 3  |
+        |                  | rest (control        | (Far Above)          |
+        |                  | constant activity)   |                      |
+        +------------------+----------------------+----------------------+
+        | swan15           | 15\. Modulate verbal | -3 (Far Below) to 3  |
+        |                  | activity (control    | (Far Above)          |
+        |                  | excess talking)      |                      |
+        +------------------+----------------------+----------------------+
+        | swan16           | 16\. Reflect on      | -3 (Far Below) to 3  |
+        |                  | questions (control   | (Far Above)          |
+        |                  | blurting out         |                      |
+        |                  | answers)             |                      |
+        +------------------+----------------------+----------------------+
+        | swan17           | 17\. Await turn      | -3 (Far Below) to 3  |
+        |                  | (stand in line and   | (Far Above)          |
+        |                  | take turns)          |                      |
+        +------------------+----------------------+----------------------+
+        | swan18           | 18\. Enter into      | -3 (Far Below) to 3  |
+        |                  | conversations and    | (Far Above)          |
+        |                  | games (control       |                      |
+        |                  | interrupting /       |                      |
+        |                  | intruding)           |                      |
+        +------------------+----------------------+----------------------+
+
+        </div>
+
+3.  Any additional columns in the spreadsheet, i.e. an identifier, will
+    remain untouched in the spreadsheet
+
+### Installation
+
+You can install the development version of SwanScorer from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
 pak::pak("jclutton/SwanScorer")
 ```
 
-## Example
+### Generate Scores
 
-This is a basic example which shows you how to solve a common problem:
+Use the code below to generate your t-scores. First, You will be
+prompted to select your file. Second, we will check that your data are
+formatted properly. And third, t-scores for the full test as well as the
+two subdomains (inattentive and hyperactive) will all be generated
 
-```{r example}
+```{r example, eval = FALSE}
 library(SwanScorer)
-## basic example code
+
+# The get_swan_tscores checks that your data are formatted correctly and generates the t-scores
+swan_tscores <- get_swan_tscores()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+### Additional options
 
-```{r cars}
-summary(cars)
+You have the option to specify...
+
+1.  the file path of the input file
+
+2.  a folder to save a output spreadsheet with the t-scores
+
+```{r example2, eval=FALSE}
+
+# Example of how to specify the input file
+swan_tscores <- get_swan_tscores(file = here("test_scores.csv"))
+
+# Example of how to automatically save a spreadsheet
+swan_tscores <- get_swan_tscores(output_folder = here())
+
+
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
