@@ -16,3 +16,7 @@ LazyData: true
 URL: https://github.com/jclutton/SwanScorer
 BugReports: https://github.com/jclutton/SwanScorer/issues
 RoxygenNote: 7.3.2
+Imports: 
+    dplyr,
+    rio,
+    tidyr
