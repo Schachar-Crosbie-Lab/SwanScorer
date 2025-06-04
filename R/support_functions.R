@@ -173,12 +173,10 @@ mkpro <- function(maxmiss = NA, dat = NA, a = NULL, b = NULL, root = 'swan', new
 #'
 #' @title Build Totals and Prorated Totals for Full Test and Subdomains
 #'
-#' @description Use the dataframe from [clean_file()] and the [mkpro()] function to calculate totals, missingness, and pro-rated totals
-#' for the total test and subdomains
+#' @description Use the dataframe from [clean_file()] and the [mkpro()] function to reverse scores, then
+#' calculate totals, missingness, and pro-rated totals for the total test and subdomains
 #'
-#' @importFrom dplyr mutate
-#' @importFrom dplyr case_when
-#' @importFrom dplyr rename
+#' @import dplyr
 #'
 #' @param df should be a data.frame from [clean_file()]
 #'
@@ -194,7 +192,10 @@ build_summary <- function(df = NULL) {
                                             gender == 2 ~ 1)) |>
     dplyr::mutate(youth = dplyr::case_when(age < 12 ~ 0,
                                            age >= 12 ~ 1,
-                                           T ~ NA))
+                                           T ~ NA)) |>
+    # Reverse scores
+    dplyr::mutate(dplyr::across(dplyr::contains("swan"),
+                         ~-1*.x))
 
   #Whole test scores
   df_tot <- cbind(df_tot, mkpro(dat = df, a = 1, b = 18))

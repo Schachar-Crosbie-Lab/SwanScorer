@@ -13,6 +13,6 @@ build_summary(df = NULL)
 A data frame with all of the totals columns
 }
 \description{
-Use the dataframe from [clean_file()] and the [mkpro()] function to calculate totals, missingness, and pro-rated totals
-for the total test and subdomains
+Use the dataframe from [clean_file()] and the [mkpro()] function to reverse scores, then
+calculate totals, missingness, and pro-rated totals for the total test and subdomains
 }
