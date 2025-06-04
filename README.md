@@ -30,10 +30,12 @@ Our first step is to prepare your raw SWAN data.
 
     <div>
 
-    | Column Name | Additional Information | Example             |
-    |-------------|------------------------|---------------------|
-    | age         | The child’s age        | 5 - 18              |
-    | gender      | The child’s gender     | 1 = Male 2 = Female |
+    | Column Name | Additional Information | Example |
+    |----|----|----|
+    | age | The child’s age | 5 - 18 |
+    | gender | The child’s gender | 1 = Male, 2 = Female |
+    | p_respondent | Whether the survey was filled out by the parent or the child | 1 = Parent Respondent, 0 = Child / Youth Self-Respondent |
+    | swan1 | 1\. Give close attention to detail and avoid careless mistakes | -3 (Far Below) to 3 (Far Above) |
 
     <table style="width:64%;">
     <colgroup>
