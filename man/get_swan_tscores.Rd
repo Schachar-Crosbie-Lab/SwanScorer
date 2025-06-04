@@ -4,16 +4,12 @@
 \alias{get_swan_tscores}
 \title{Run analysis on SWAN raw values to return t-scores}
 \usage{
-get_swan_tscores(file = NULL, output_folder = NULL, model = "general")
+get_swan_tscores(file = NULL, output_folder = NULL)
 }
 \arguments{
 \item{file}{Pathway to formatted raw SWAN scores}
 
 \item{output_folder}{Optional parameter, to export a csv file of the t-scores}
-
-\item{model}{Select general or longitudinal.
-General adjusts for time and is generally recommended.
-Longitudinal does not adjust for time. Use longitudinal when studying SWAN scores over time.}
 }
 \value{
 table with t-scores attached to raw swan values

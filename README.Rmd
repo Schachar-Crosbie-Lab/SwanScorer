@@ -44,9 +44,9 @@ Our first step is to prepare your raw SWAN data.
     t-score for that row.
 
     <div>
-    
+
     | Column Name | Additional Information | Example |
-    |-------------|------------------------|---------|
+    |-------------------|------------------------------------|-----------------|
     | age | The child's age | 5 - 18 |
     | gender | The child's gender | 1 = Male, 2 = Female |
     | p_respondent | Whether the survey was filled out by the parent or the child | 1 = Parent Respondent, 0 = Child / Youth Self-Respondent |
@@ -63,11 +63,11 @@ Our first step is to prepare your raw SWAN data.
     | swan11 | 11\. Stay seated (when required by class rules / social conventions) | -3 (Far Below) to 3 (Far Above) |
     | swan12 | 12\. Modulate motor activity (inhibit inappropriate running / climbing) | -3 (Far Below) to 3 (Far Above) |
     | swan13 | 13\. Play quietly (keep noise level reasonable) | -3 (Far Below) to 3 (Far Above) |
-    | swan14 | 14\. Settle down and rest (control constant activity) | -3 (Far Below) to 3 (Far Above) | 
-    | swan15 | 15\. Modulate verbal activity (control excess talking) | -3 (Far Below) to 3 (Far Above) | 
-    | swan16 | 16\. Reflect on questions (control blurting out answers) | -3 (Far Below) to 3 (Far Above) | 
-    | swan17 | 17\. Await turn (stand in line and take turns) | -3 (Far Below) to 3 (Far Above) | 
-    | swan18 | 18\. Enter into conversations and games (control interrupting / intruding) | -3 (Far Below) to 3 (Far Above) | 
+    | swan14 | 14\. Settle down and rest (control constant activity) | -3 (Far Below) to 3 (Far Above) |
+    | swan15 | 15\. Modulate verbal activity (control excess talking) | -3 (Far Below) to 3 (Far Above) |
+    | swan16 | 16\. Reflect on questions (control blurting out answers) | -3 (Far Below) to 3 (Far Above) |
+    | swan17 | 17\. Await turn (stand in line and take turns) | -3 (Far Below) to 3 (Far Above) |
+    | swan18 | 18\. Enter into conversations and games (control interrupting / intruding) | -3 (Far Below) to 3 (Far Above) |
 
     </div>
 
@@ -125,79 +125,24 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 
 ### T-scores for generic model
 
-+-------------------------------+-------------------------------+
-| Column                        | Description                   |
-+===============================+===============================+
-| swan_gender_tscores           | A t-score across the full     |
-|                               | SWAN test that adjusts for    |
-|                               | age, respondent, and gender   |
-+-------------------------------+-------------------------------+
-| swan_tscores                  | A t-score across the full     |
-|                               | SWAN test that adjusts for    |
-|                               | age and respondent            |
-+-------------------------------+-------------------------------+
-| swan_ia_gender_tscores        | A t-score of the inattentive  |
-|                               | subdomain (questions 1-9)     |
-|                               | that adjusts for age,         |
-|                               | respondent, and gender        |
-+-------------------------------+-------------------------------+
-| swan_ia_tscores               | A t-score of the inattentive  |
-|                               | subdomain (questions 1-9)     |
-|                               | that adjusts for age and      |
-|                               | respondent                    |
-+-------------------------------+-------------------------------+
-| swan_hi_gender_tscores        | A t-score of the hyperactive  |
-|                               | subdomain (questions 10-18)   |
-|                               | that adjusts for age,         |
-|                               | respondent, and gender        |
-+-------------------------------+-------------------------------+
-| swan_hi_tscores               | A t-score of the hyperactive  |
-|                               | subdomain (questions 10-18)   |
-|                               | that adjusts for age and      |
-|                               | respondent                    |
-+-------------------------------+-------------------------------+
-
-### T-scores for longitudinal model
-
-+-------------------------------+-------------------------------+
-| Column                        | Description                   |
-+===============================+===============================+
-| swan_gender_time_tscores      | A t-score across the full     |
-|                               | SWAN test that adjusts for    |
-|                               | age, respondent, and gender   |
-+-------------------------------+-------------------------------+
-| swan_time_tscores             | A t-score across the full     |
-|                               | SWAN test that adjusts for    |
-|                               | age and respondent            |
-+-------------------------------+-------------------------------+
-| swan_ia_gender_time_tscores   | A t-score of the inattentive  |
-|                               | subdomain (questions 1-9)     |
-|                               | that adjusts for age,         |
-|                               | respondent, and gender        |
-+-------------------------------+-------------------------------+
-| swan_ia_time_tscores          | A t-score of the inattentive  |
-|                               | subdomain (questions 1-9)     |
-|                               | that adjusts for age and      |
-|                               | respondent                    |
-+-------------------------------+-------------------------------+
-| swan_hi_gender_time_tscores   | A t-score of the hyperactive  |
-|                               | subdomain (questions 10-18)   |
-|                               | that adjusts for age,         |
-|                               | respondent, and gender        |
-+-------------------------------+-------------------------------+
-| swan_hi_time_tscores          | A t-score of the hyperactive  |
-|                               | subdomain (questions 10-18)   |
-|                               | that adjusts for age and      |
-|                               | respondent                    |
-+-------------------------------+-------------------------------+
-
-### Summary values regardless of model
+-   Understanding the variables
 
 | Column | Description |
-|----|----|
-| swan_tot | A summed score of the answered questions across the whole test |
-| swan_miss | A count of missing values across the whole test |
-| swan_pro | A prorated score by dividing swan_tot by the number of answered questions across the whole test |
+|--------------------------------|--------------------------------|
+| swan_gender_study_tscores | A t-score across the entire SWAN test that adjusts for age, respondent, and gender |
+| swan_study_tscores | A t-score across the entire SWAN test that adjusts for age and respondent |
+| swan_ia_gender_study_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age, respondent, and gender |
+| swan_ia_study_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age and respondent |
+| swan_hi_gender_study_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age, respondent, and gender |
+| swan_hi_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age and respondent |
+
+### Summary Values
+
+| Column | Description |
+|------------------------------------|------------------------------------|
+| swan_tot | A summed score of the answered questions across the entire test |
+| swan_miss | A count of missing values across the entire test |
+| swan_pro | A prorated score by dividing swan_tot by the number of answered questions across the entire test |
 | swan_ia_tot | A summed score of the answered questions across the inattentive subdomain |
 | swan_ia_miss | A count of missing values across the inattentive subdomain |
 | swan_ia_pro | A prorated score by dividing swan_tot by the number of answered questions across the inattentive subdomain |

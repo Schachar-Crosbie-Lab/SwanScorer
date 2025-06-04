@@ -108,33 +108,24 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 
 ### T-scores for generic model
 
+- Understanding the variables
+
 | Column | Description |
 |----|----|
-| swan_gender_tscores | A t-score across the full SWAN test that adjusts for age, respondent, and gender |
-| swan_tscores | A t-score across the full SWAN test that adjusts for age and respondent |
-| swan_ia_gender_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age, respondent, and gender |
-| swan_ia_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age and respondent |
-| swan_hi_gender_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age, respondent, and gender |
+| swan_gender_study_tscores | A t-score across the entire SWAN test that adjusts for age, respondent, and gender |
+| swan_study_tscores | A t-score across the entire SWAN test that adjusts for age and respondent |
+| swan_ia_gender_study_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age, respondent, and gender |
+| swan_ia_study_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age and respondent |
+| swan_hi_gender_study_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age, respondent, and gender |
 | swan_hi_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age and respondent |
 
-### T-scores for longitudinal model
+### Summary Values
 
 | Column | Description |
 |----|----|
-| swan_gender_time_tscores | A t-score across the full SWAN test that adjusts for age, respondent, and gender |
-| swan_time_tscores | A t-score across the full SWAN test that adjusts for age and respondent |
-| swan_ia_gender_time_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age, respondent, and gender |
-| swan_ia_time_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age and respondent |
-| swan_hi_gender_time_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age, respondent, and gender |
-| swan_hi_time_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age and respondent |
-
-### Summary values regardless of model
-
-| Column | Description |
-|----|----|
-| swan_tot | A summed score of the answered questions across the whole test |
-| swan_miss | A count of missing values across the whole test |
-| swan_pro | A prorated score by dividing swan_tot by the number of answered questions across the whole test |
+| swan_tot | A summed score of the answered questions across the entire test |
+| swan_miss | A count of missing values across the entire test |
+| swan_pro | A prorated score by dividing swan_tot by the number of answered questions across the entire test |
 | swan_ia_tot | A summed score of the answered questions across the inattentive subdomain |
 | swan_ia_miss | A count of missing values across the inattentive subdomain |
 | swan_ia_pro | A prorated score by dividing swan_tot by the number of answered questions across the inattentive subdomain |
