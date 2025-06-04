@@ -168,10 +168,12 @@ Our first step is to prepare your raw SWAN data.
 ### Installation
 
 You can install the development version of SwanScorer from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/jclutton/SwanScorer) with:
 
 ``` r
-# install.packages("pak")
+# If the pak package isn't installed already, do so first. 
+install.packages("pak")
+
 pak::pak("jclutton/SwanScorer")
 ```
 
