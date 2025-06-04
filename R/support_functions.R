@@ -225,246 +225,201 @@ run_model <- function(df = NULL) {
 
   #### Produce t-scores with gender
   swan_gender_pred <-
-    -4.0630359 - 0.3384133  * df$age18 + 1.7004264 * df$female + 1.5455007 *
-    df$p_respondent - 8.3141252 * df$female * df$p_respondent
+    -5.89116264 -0.04131771  * df$age18 + 3.21297752 * df$female + 2.36149327 *
+    df$p_respondent -0.19784628  * df$age18 * df$female -
+    8.09749524 * df$female * df$p_respondent
 
   swan_gender_low <- as.numeric((df$swan_pro - swan_gender_pred) < 0)
 
   swan_gender_sd_pred <- sqrt(
-    325.95663 - 7.12465 * df$age18 + 13.4144 * df$female -
-      229.07860 *
-      df$p_respondent + 106.69317 * swan_gender_low  + 29.39191 * df$age18 *
-      df$p_respondent - 44.74060 * df$female * df$p_respondent
+    335.554174 -6.892389 * df$age18 -34.027173 * df$female -199.007595 *
+      df$p_respondent + 55.750708 * swan_gender_low + 22.716755 * df$age18*
+      df$p_respondent+ 18.995395 * df$female *
+      swan_gender_low + 35.965149 * swan_gender_low* df$p_respondent
   )
 
   res_adj <-
-    dplyr::case_when(
-      !(df$female) &
-        !(df$youth)  ~ -0.06113885,
-      !(df$female) &
-        as.logical(df$youth)  ~ -0.06736433,
-      as.logical(df$female)  &
-        !(df$youth) ~ -0.07421668,
-      as.logical(df$female)  &
-        as.logical(df$youth) ~ -0.06374547
-    )
-
+    dplyr::case_when(!(df$female) & !(df$youth)  ~ - 0.05667120,
+              !(df$female) & as.logical(df$youth)  ~ - 0.03731458,
+              as.logical(df$female)  & !(df$youth) ~ - 0.07481923,
+              as.logical(df$female)  & as.logical(df$youth) ~ - 0.06801125)
   sd_adj <-
-    dplyr::case_when(
-      !(df$female) &
-        !(df$youth)  ~ 0.9986281,
-      !(df$female) &
-        as.logical(df$youth)  ~ 0.9879085,
-      as.logical(df$female)  &
-        !(df$youth) ~ 0.9976924,
-      as.logical(df$female)  &
-        as.logical(df$youth) ~ 0.9972819
-    )
+    dplyr::case_when(!(df$female) & !(df$youth)  ~ 1.0016168,
+              !(df$female) & as.logical(df$youth)  ~ 0.9825868,
+              as.logical(df$female)  & !(df$youth) ~ 0.9980045,
+              as.logical(df$female)  & as.logical(df$youth) ~ 0.9951056)
 
-  df$swan_gender_study_tscores <- (((df$swan_pro - swan_gender_pred) / swan_gender_sd_pred
+  df$swan_gender_tscores <- (((df$swan_pro - swan_gender_pred) / swan_gender_sd_pred
   ) + res_adj) / (sd_adj) * 10 + 50
 
-  df$swan_gender_study_tscores <-
+  df$swan_gender_tscores <-
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_gender_study_tscores
+           df$swan_gender_tscores
     )
 
- #### Across Gender
+ #### Full Test Across Gender
 
-  swan_pred <- -3.3512518 - 0.3206639 * df$age18 - 2.5708190 * df$p_respondent
+  swan_pred <- -4.5263952 -0.1239674 * df$age18 -1.4756826* df$p_respondent
 
   swan_low <- as.numeric((df$swan_pro - swan_pred) < 0)
 
   swan_sd_pred <- sqrt(
-    314.405841 - 4.962281 * df$age18 - 252.382387 * df$p_respondent + 156.755038 *
-      swan_low + 30.436026 * df$age18 * df$p_respondent -
-      5.112260 * df$age18 * swan_low
+    330.448475 -7.958323 * df$age18 -210.073579 * df$p_respondent + 70.764921 *
+      swan_low + 24.639125 * df$age18 * df$p_respondent +
+      38.308399 * df$p_respondent * swan_low
   )
 
   res_adj <-
-    dplyr::case_when(
-      !(df$youth)  ~ -0.06810488,
-      as.logical(df$youth)  ~ -0.05023800
-    )
+    dplyr::case_when(!(df$youth)  ~ - 0.06709415,
+              as.logical(df$youth)  ~ - 0.05588406)
   sd_adj <-
-    dplyr::case_when(
-      !(df$youth)  ~ 0.9993120,
-      as.logical(df$youth)  ~ 0.9889011
-    )
+    dplyr::case_when(!(df$youth)  ~ 1.0000512,
+              as.logical(df$youth)  ~ 0.9878853)
 
-  df$swan_study_tscores <- (((df$swan_pro - swan_pred) / swan_sd_pred) + res_adj) / (sd_adj) * 10 + 50
+  df$swan_tscores <- (((df$swan_pro - swan_pred) / swan_sd_pred) + res_adj) / (sd_adj) * 10 + 50
 
-  df$swan_study_tscores <-
+  df$swan_tscores <-
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_study_tscores
+           df$swan_tscores
     )
 
   #### Inattentive Models with gender
-  swan_ia_gender_pred <- -5.8020600 + 0.1024968 * df$age18 +
-    3.4245032 * df$female + 1.9036940 * df$p_respondent -
-    0.1688897 * df$age18 * df$female - 4.8939896 * df$female * df$p_respondent
+  swan_ia_gender_pred <- -2.27015980 -0.05982379 * df$age18 +
+    2.81522719 * df$female -2.05583095 * df$p_respondent -
+    0.18218773 * df$age18 * df$female +
+    0.32346190 * df$age18* df$p_respondent -
+    4.18697376 * df$female * df$p_respondent
 
   swan_ia_gender_low <- as.numeric((df$swan_ia_pro - swan_ia_gender_pred) < 0)
 
   swan_ia_gender_sd_pred <- sqrt(
-    48.549114  + 1.769995 * df$age18 + 3.912498 * df$female -
-      38.303116 *  df$p_respondent + 45.919611 * swan_ia_gender_low +
-      6.907424 *  df$age18 * df$p_respondent -
-      2.897395 * df$age18 * swan_ia_gender_low -
-      12.385480 * df$female * df$p_respondent
+    66.82162985 + 0.09603753 * df$age18 - 30.81296839 * df$female -
+      39.78964117 *  df$p_respondent + 23.57972401 * swan_ia_gender_low +
+      1.74298146 *  df$age18*df$female +
+      5.95298385 * df$age18*df$p_respondent -
+      0.83281776 * df$age18*swan_ia_gender_low +
+      9.30523804 * df$female*df$p_respondent +
+      63.30773658 * df$female*swan_ia_gender_low +
+      4.48888373 * df$p_respondent*swan_ia_gender_low -
+      4.48057933 * df$age18 * df$female * swan_ia_gender_low -
+      23.50013378 * df$female*df$p_respondent * swan_ia_gender_low
   )
 
   res_adj <-
-    dplyr::case_when(
-      !(df$female) &
-        !(df$youth)  ~ -0.047669334,
-      !(df$female) &
-        as.logical(df$youth)  ~ -0.001994747,
-      as.logical(df$female)  &
-        !(df$youth) ~ -0.052532166,
-      as.logical(df$female)  &
-        as.logical(df$youth) ~ -0.011352696
-    )
+    dplyr::case_when(!(df$female) & !(df$youth)  ~ - 0.04808467,
+              !(df$female) & as.logical(df$youth)  ~ - 0.01362761,
+              as.logical(df$female)  & !(df$youth) ~ - 0.05324375,
+              as.logical(df$female)  & as.logical(df$youth) ~ - 0.00539528)
   sd_adj <-
-    dplyr::case_when(
-      !(df$female) &
-        !(df$youth)  ~ 0.9983462,
-      !(df$female) &
-        as.logical(df$youth)  ~ 0.9892343,
-      as.logical(df$female)  &
-        !(df$youth) ~ 1.0007317,
-      as.logical(df$female)  &
-        as.logical(df$youth) ~ 0.9974842
-    )
+    dplyr::case_when(!(df$female) & !(df$youth)  ~ 1.0013408,
+              !(df$female) & as.logical(df$youth)  ~ 0.9864554,
+              as.logical(df$female)  & !(df$youth) ~ 0.9983115,
+              as.logical(df$female)  & as.logical(df$youth) ~ 0.9985900)
 
-  df$swan_ia_gender_study_tscores <- (((df$swan_ia_pro - swan_ia_gender_pred) / swan_ia_gender_sd_pred
+  df$swan_ia_gender_tscores <- (((df$swan_ia_pro - swan_ia_gender_pred) / swan_ia_gender_sd_pred
   ) + res_adj) / (sd_adj) * 10 + 50
 
-  df$swan_ia_gender_study_tscores <-
+  df$swan_ia_gender_tscores <-
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_ia_gender_study_tscores
+           df$swan_ia_gender_tscores
     )
 
   #### Inattentive across gender
-  swan_ia_pred <- -3.7744681 - 0.6639846 * df$p_respondent
+  swan_ia_pred <- -0.5616086 -0.1714923 * df$age18 -4.5003689 *
+    df$p_respondent + 0.3553717 * df$p_respondent   * df$age18
 
   swan_ia_low <- as.numeric((df$swan_ia_pro - swan_ia_pred) < 0)
 
   swan_ia_sd_pred <- sqrt(
-    43.782402 + 2.444014 * df$age18 - 43.067165 * df$p_respondent + 57.574635 *
-      swan_ia_low + 7.026785 * df$age18 * df$p_respondent -
-      4.044906 * df$age18 * swan_ia_low
+    61.8480880 +0.2827506 * df$age18 -43.4624885 * df$p_respondent + 41.0199394 *
+      swan_ia_low +6.6301452 * df$age18 * df$p_respondent -
+      2.2297058 * df$age18 * swan_ia_low
   )
 
   res_adj <-
-    dplyr::case_when(
-      !(df$youth)  ~ -0.050939400,
-      as.logical(df$youth)  ~ -0.001064299
-    )
+    dplyr::case_when(!(df$youth)  ~ - 0.04973843,
+              as.logical(df$youth)  ~ - 0.01125797)
   sd_adj <-
-    dplyr::case_when(
-      !(df$youth)  ~ 0.9993775,
-      as.logical(df$youth)  ~ 0.9932011
-    )
+    dplyr::case_when(!(df$youth)  ~ 1.0003921,
+              as.logical(df$youth)  ~ 0.9915715)
 
-  df$swan_ia_study_tscores <- (((df$swan_ia_pro - swan_ia_pred) / swan_ia_sd_pred
+  df$swan_ia_tscores <- (((df$swan_ia_pro - swan_ia_pred) / swan_ia_sd_pred
   ) + res_adj) / (sd_adj) * 10 + 50
 
-  df$swan_ia_study_tscores <-
+  df$swan_ia_tscores <-
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_ia_study_tscores
+           df$swan_ia_tscores
     )
 
+
   #### Hyperactive with gender
-  swan_hi_gender_pred <- -4.17675209 - 0.04167303 * df$age18 + 0.70229528 * df$female + 5.13833773 *
+  swan_hi_gender_pred <- -1.4239717 -0.1281090 * df$age18 +0.1993159 * df$female +2.1542836 *
     df$p_respondent -
-    0.35179042 * df$age18 * df$p_respondent - 4.35765313 * df$female * df$p_respondent
+    0.1697116 * df$age18 * df$p_respondent -
+    3.8555392 * df$female * df$p_respondent
 
   swan_hi_gender_low <- as.numeric((df$swan_hi_pro - swan_hi_gender_pred) < 0)
 
   swan_hi_gender_sd_pred <- sqrt(
-    97.2118786  - 1.6070110 * df$age18 - 17.5869608 * df$female -
-      62.4036863 * df$p_respondent + 7.5639752 * swan_hi_gender_low  + 0.5922562 *
-      df$age18 * df$female + 6.4226127 * df$age18 * df$p_respondent +
-      1.3285283 * df$age18 * swan_hi_gender_low + 4.5001409  * df$female *
-      df$p_respondent + 78.7787513 * df$female *
-      swan_hi_gender_low + 19.6268534 *
-      df$p_respondent * swan_hi_gender_low - 3.7360877 * df$age18 * df$female *
-      swan_hi_gender_low - 49.7954285 * df$female * df$p_respondent * swan_hi_gender_low
+    78.925293 -0.558714 * df$age18 -8.713805 * df$female -
+      35.091679 * df$p_respondent +35.581605 * swan_hi_gender_low  +
+      4.115880 * df$age18 * df$p_respondent
   )
 
   res_adj <-
-    dplyr::case_when(
-      !(df$female) &
-        !(df$youth)  ~ -0.07854678,
-      !(df$female) &
-        as.logical(df$youth)  ~ -0.07142296,
-      as.logical(df$female)  &
-        !(df$youth) ~ -0.08761418,
-      as.logical(df$female)  &
-        as.logical(df$youth) ~ -0.09748210
-    )
+    dplyr::case_when(!(df$female) & !(df$youth)  ~ - 0.07406115,
+              !(df$female) & as.logical(df$youth)  ~ - 0.07460341,
+              as.logical(df$female)  & !(df$youth) ~ - 0.08599513,
+              as.logical(df$female)  & as.logical(df$youth) ~ - 0.09433986)
   sd_adj <-
-    dplyr::case_when(
-      !(df$female) &
-        !(df$youth)  ~ 1.0002075,
-      !(df$female) &
-        as.logical(df$youth)  ~ 0.9772225,
-      as.logical(df$female)  &
-        !(df$youth) ~ 0.9956266,
-      as.logical(df$female)  &
-        as.logical(df$youth) ~ 0.9976900
-    )
+    dplyr::case_when(!(df$female) & !(df$youth)  ~ 1.0016622,
+              !(df$female) & as.logical(df$youth)  ~ 0.9808116,
+              as.logical(df$female)  & !(df$youth) ~ 0.9968764,
+              as.logical(df$female)  & as.logical(df$youth) ~ 0.9931237)
 
-  df$swan_hi_gender_study_tscores <- (((df$swan_hi_pro - swan_hi_gender_pred) / swan_hi_gender_sd_pred
+  df$swan_hi_gender_tscores <- (((df$swan_hi_pro - swan_hi_gender_pred) / swan_hi_gender_sd_pred
   ) + res_adj) / (sd_adj) * 10 + 50
 
-  df$swan_hi_gender_study_tscores <-
+  df$swan_hi_gender_tscores <-
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_hi_gender_study_tscores
+           df$swan_hi_gender_tscores
     )
 
   #### Hyperactive across Gender
-  swan_hi_pred <- -3.85277159 - 0.03568567 * df$age18 + 2.93347689 * df$p_respondent -
-    0.34794969 * df$age18 *
-    df$p_respondent
+  swan_hi_pred <- 0.8924961 -0.2730441 * df$age18 -2.1542228 * df$p_respondent
 
   swan_hi_low <- as.numeric((df$swan_hi_pro - swan_hi_pred) < 0)
 
   swan_hi_sd_pred <- sqrt(
-    95.490458 - 1.760477 * df$age18 - 63.468222 * df$p_respondent + 38.526578 *
-      swan_hi_low + 6.763566 * df$age18 * df$p_respondent
+    75.2453874 -0.6972927 * df$age18 -32.8392328 * df$p_respondent + 36.9714288 *
+      swan_hi_low + 4.2675590 * df$age18 * df$p_respondent
   )
 
   res_adj <-
-    dplyr::case_when(
-      !(df$youth)  ~ -0.08224601,
-      as.logical(df$youth)  ~ -0.08580553
-    )
+    dplyr::case_when(!(df$youth)  ~ - 0.07989539,
+              as.logical(df$youth)  ~ - 0.08403123)
   sd_adj <-
-    dplyr::case_when(
-      !(df$youth)  ~ 0.9980346,
-      as.logical(df$youth)  ~ 0.9868408
-    )
+    dplyr::case_when(!(df$youth)  ~ 0.9990875,
+              as.logical(df$youth)  ~ 0.9875261)
 
-  df$swan_hi_study_tscores <- (((df$swan_hi_pro - swan_hi_pred) / swan_hi_sd_pred
+  df$swan_hi_tscores <- (((df$swan_hi_pro - swan_hi_pred) / swan_hi_sd_pred
   ) + res_adj) / (sd_adj) * 10 + 50
 
-  df$swan_hi_study_tscores <-
+  df$swan_hi_tscores <-
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_hi_study_tscores
+           df$swan_hi_tscores
     )
 
   return(df = df)
