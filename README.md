@@ -30,11 +30,11 @@ Our first step is to prepare your raw SWAN data.
 
     <div>
 
-    <table style="width:67%;">
+    <table style="width:62%;">
     <colgroup>
-    <col style="width: 22%" />
-    <col style="width: 22%" />
-    <col style="width: 22%" />
+    <col style="width: 20%" />
+    <col style="width: 20%" />
+    <col style="width: 20%" />
     </colgroup>
     <thead>
     <tr>
@@ -100,7 +100,7 @@ Our first step is to prepare your raw SWAN data.
     <tr>
     <td>swan8</td>
     <td>8. Ignore extraneous stimuli (able to ignore background n o i s e /
-    distractions)</td>
+    d istractions)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
@@ -122,7 +122,7 @@ Our first step is to prepare your raw SWAN data.
     </tr>
     <tr>
     <td>swan12</td>
-    <td>12. Modulate motor activity (inhibit inappropriate running /
+    <td>12. Modulate motor activity (inhibit i nappropriate running /
     climbing)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
@@ -153,7 +153,7 @@ Our first step is to prepare your raw SWAN data.
     </tr>
     <tr>
     <td>swan18</td>
-    <td>18. Enter into conversations and games (control interrupting /
+    <td>18. Enter into c onversations and games (control interrupting /
     intruding)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
@@ -214,9 +214,9 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 
 | Column | Description |
 |----|----|
-| swan_gender_study_tscores | A t-score across the full SWAN test with gender in the model |
-| swan_study_tscores | A t-score across the full SWAN test without gender in the model |
-| swan_ia_gender_study_tscores | A t-score of the inattentive subdomain (questions 1-9) with gender in the model |
-| swan_ia_study_tscores | A t-score of the inattentive subdomain (questions 1-9) without gender in the model |
-| swan_hi_gender_study_tscores | A t-score of the hyperactive subdomain (questions 10-18) with gender in the model |
-| swan_hi_study_tscores | A t-score of the hyperactive subdomain (questions 10-18) without gender in the model |
+| swan_gender_tscores | A t-score across the full SWAN test that adjusts for age, respondent, and gender |
+| swan_tscores | A t-score across the full SWAN test that adjusts for age and respondent |
+| swan_ia_gender_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age, respondent, and gender |
+| swan_ia_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age and respondent |
+| swan_hi_gender_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age, respondent, and gender |
+| swan_hi_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age and respondent |
