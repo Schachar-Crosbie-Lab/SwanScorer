@@ -125,8 +125,6 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 
 ### T-scores for generic model
 
--   Understanding the variables
-
 | Column | Description |
 |--------------------------------|--------------------------------|
 | swan_gender_study_tscores | A t-score across the entire SWAN test that adjusts for age, respondent, and gender |
