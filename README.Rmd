@@ -44,48 +44,53 @@ Our first step is to prepare your raw SWAN data.
     t-score for that row.
 
     <div>
+    
+    | Column Name | Additional Information | Example |
+    |-------------|------------------------|---------|
+    | age | The child's age | 5 - 18 |
+    | gender | The child's gender | 1 = Male 2 = Female |
 
     +-----------+-----------+-----------+
-    | Column    | A         | Values    |
-    | Name      | dditional |           |
-    |           | in        |           |
-    |           | formation |           |
-    +===========+===========+===========+
-    | age       | The       | 5 - 18    |
-    |           | child's   |           |
-    |           | age       |           |
-    +-----------+-----------+-----------+
-    | gender    | The       | 1 = Male  |
-    |           | child's   |           |
-    |           | gender    | 2 =       |
-    |           |           | Female    |
-    +-----------+-----------+-----------+
-    | p_r       | Whether   | 1 =       |
-    | espondent | the       | Parent    |
-    |           | survey    | R         |
-    |           | was       | espondent |
-    |           | filled    |           |
-    |           | out by    | 0 = Child |
-    |           | the       | / Youth   |
-    |           | parent or | Self      |
-    |           | the child | R         |
-    |           |           | espondent |
-    +-----------+-----------+-----------+
-    | swan1     | 1\. Give  | -3 (Far   |
-    |           | close     | Below) to |
-    |           | attention | 3 (Far    |
-    |           | to detail | Above)    |
-    |           | and avoid |           |
-    |           | careless  |           |
-    |           | mistakes  |           |
-    +-----------+-----------+-----------+
-    | swan2     | 2\.       | -3 (Far   |
-    |           | Sustain   | Below) to |
-    |           | attention | 3 (Far    |
-    |           | on tasks  | Above)    |
-    |           | and play  |           |
-    |           | a         |           |
-    |           | ctivities |           |
+    | Column     | A         | Values    |
+    | Name       | dditional |           |
+    |            | in        |           |
+    |            | formation |           |
+    +============ +===========+===========+
+    | age        | The       | 5 - 18    |
+    |            | child's   |           |
+    |            | age       |           |
+    +------------+-----------+-----------+
+    | gender     | The       | 1 = Male  |
+    |            | child's   |           |
+    |            | gender    | 2 =       |
+    |            |           | Female    |
+    +------------+-----------+-----------+
+    | p_respondent        | Whether   | 1 =       |
+    | espondent  | the       | Parent    |
+    |            | survey    | R         |
+    |            | was       | espondent |
+    |            | filled    |           |
+    |            | out by    | 0 = Child |
+    |            | the       | / Youth   |
+    |            | parent or | Self      |
+    |            | the child | R         |
+    |            |           | espondent |
+    +------------+-----------+-----------+
+    | swan1      | 1\. Give  | -3 (Far   |
+    |            | close     | Below) to |
+    |            | attention | 3 (Far    |
+    |            | to detail | Above)    |
+    |            | and avoid |           |
+    |            | careless  |           |
+    |            | mistakes  |           |
+    +------------+-----------+-----------+
+    | swan2      | 2\.       | -3 (Far   |
+    |            | Sustain   | Below) to |
+    |            | attention | 3 (Far    |
+    |            | on tasks  | Above)    |
+    |            | and play  |           |
+    |            | a         |           |
+    |            | ctivities |           |
     +-----------+-----------+-----------+
     | swan3     | 3\.       | -3 (Far   |
     |           | Listen    | Below) to |
