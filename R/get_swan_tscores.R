@@ -37,7 +37,7 @@ get_swan_tscores <- function(file = NULL, output_folder = NULL) {
     dplyr::select(-age18, female, youth)
 
   # Print a summary in the console
-  message(paste0("The model scored ",sum(!is.na(score$swan_gender_time_tscores))," observations."))
+  message(paste0("The model scored ",sum(!is.na(score$swan_gender_study_tscores))," observations."))
   print(
     score |>
       dplyr::group_by(gender, youth, p_respondent) |>
