@@ -36,172 +36,23 @@ Our first step is to prepare your raw SWAN data.
     | gender | The child’s gender | 1 = Male, 2 = Female |
     | p_respondent | Whether the survey was filled out by the parent or the child | 1 = Parent Respondent, 0 = Child / Youth Self-Respondent |
     | swan1 | 1\. Give close attention to detail and avoid careless mistakes | -3 (Far Below) to 3 (Far Above) |
-
-    <table style="width:64%;">
-    <colgroup>
-    <col style="width: 16%" />
-    <col style="width: 1%" />
-    <col style="width: 15%" />
-    <col style="width: 1%" />
-    <col style="width: 15%" />
-    <col style="width: 1%" />
-    <col style="width: 12%" />
-    </colgroup>
-    <tbody>
-    <tr>
-    <td colspan="7">Column | A | Values | Name | dditional | | | in | | |
-    formation | | ============ +===========+===========+ age | The | 5 - 18
-    | | child’s | | | age | |</td>
-    </tr>
-    <tr>
-    <td colspan="2">gender</td>
-    <td colspan="2">The child’s gender</td>
-    <td colspan="2"><p>1 = Male</p>
-    <p>2 = Female</p></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td colspan="7">p_respondent | Whether | 1 = espondent | the | Parent |
-    | survey | R | | was | espondent | | filled | | | out by | 0 = Child | |
-    the | / Youth | | parent or | Self | | the child | R | | | espondent
-    |</td>
-    </tr>
-    <tr>
-    <td colspan="2">swan1</td>
-    <td colspan="2">1. Give close attention to detail and avoid careless
-    mistakes</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    </tr>
-    <tr>
-    <td colspan="7">swan2 | 2. | -3 (Far | | Sustain | Below) to | |
-    attention | 3 (Far | | on tasks | Above) | | and play | | | a | | |
-    ctivities | |</td>
-    </tr>
-    <tr>
-    <td>swan3</td>
-    <td colspan="2">3. Listen when spoken to directly</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan4</td>
-    <td colspan="2">4. Follow through on i n s tructions and finish s
-    choolwork / chores</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan5</td>
-    <td colspan="2">5. Organize tasks and a ctivities</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan6</td>
-    <td colspan="2">6. Engage in tasks that require sustained mental
-    effort</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan7</td>
-    <td colspan="2">7. Keep track of things necessary for a ctivities</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan8</td>
-    <td colspan="2">8. Ignore e xtraneous stimuli (able to ignore b
-    ackground n oise/dist ractions)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan9</td>
-    <td colspan="2">9. Remember daily a ctivities</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan10</td>
-    <td colspan="2">10. Sit still (control movements of hands / feet or
-    control s quirming)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan11</td>
-    <td colspan="2">11. Stay seated (when required by class rules / social
-    con ventions)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan12</td>
-    <td colspan="2">12. Modulate motor activity (inhibit inap propriate
-    running / climbing)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan13</td>
-    <td colspan="2">13. Play quietly (keep noise level re asonable)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan14</td>
-    <td colspan="2">14. Settle down and rest (control constant
-    activity)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan15</td>
-    <td colspan="2">15. Modulate verbal activity (control excess
-    talking)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan16</td>
-    <td colspan="2">16. Reflect on questions (control blurting out
-    answers)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan17</td>
-    <td colspan="2">17. Await turn (stand in line and take turns)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td>swan18</td>
-    <td colspan="2">18. Enter into conv ersations and games (control int
-    errupting / i ntruding)</td>
-    <td colspan="2">-3 (Far Below) to 3 (Far Above)</td>
-    <td></td>
-    <td></td>
-    </tr>
-    </tbody>
-    </table>
+    | swan2 | 2\. Sustain attention on tasks and play activities | -3 (Far Below) to 3 (Far Above) |
+    | swan3 | 3\. Listen when spoken to directly | -3 (Far Below) to 3 (Far Above) |
+    | swan4 | 4\. Follow through on instructions and finish schoolwork / chores | -3 (Far Below) to 3 (Far Above) |
+    | swan5 | 5\. Organize tasks and activities | -3 (Far Below) to 3 (Far Above) |
+    | swan6 | 6\. Engage in tasks that require sustained mental effort | -3 (Far Below) to 3 (Far Above) |
+    | swan7 | 7\. Keep track of things necessary for activities | -3 (Far Below) to 3 (Far Above) |
+    | swan8 | 8\. Ignore extraneous stimuli (able to ignore background noise/distractions) | -3 (Far Below) to 3 (Far Above) |
+    | swan9 | 9\. Remember daily activities | -3 (Far Below) to 3 (Far Above) |
+    | swan10 | 10\. Sit still (control movements of hands / feet or control squirming) | -3 (Far Below) to 3 (Far Above) |
+    | swan11 | 11\. Stay seated (when required by class rules / social conventions) | -3 (Far Below) to 3 (Far Above) |
+    | swan12 | 12\. Modulate motor activity (inhibit inappropriate running / climbing) | -3 (Far Below) to 3 (Far Above) |
+    | swan13 | 13\. Play quietly (keep noise level reasonable) | -3 (Far Below) to 3 (Far Above) |
+    | swan14 | 14\. Settle down and rest (control constant activity) | -3 (Far Below) to 3 (Far Above) |
+    | swan15 | 15\. Modulate verbal activity (control excess talking) | -3 (Far Below) to 3 (Far Above) |
+    | swan16 | 16\. Reflect on questions (control blurting out answers) | -3 (Far Below) to 3 (Far Above) |
+    | swan17 | 17\. Await turn (stand in line and take turns) | -3 (Far Below) to 3 (Far Above) |
+    | swan18 | 18\. Enter into conversations and games (control interrupting / intruding) | -3 (Far Below) to 3 (Far Above) |
 
     </div>
 
