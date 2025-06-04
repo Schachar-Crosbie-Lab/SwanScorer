@@ -2,7 +2,7 @@
 % Please edit documentation in R/support_functions.R
 \name{run_model}
 \alias{run_model}
-\title{Runs the model and creates t-scores}
+\title{Runs the model that adjusts for time and create t-scores}
 \usage{
 run_model(df = NULL)
 }
@@ -13,5 +13,7 @@ run_model(df = NULL)
 A data frame with t-scores
 }
 \description{
+This is the generic model used to create t-scores. It adjusts for gender, age, respondent, and time.
+It is best used in all cases unless a team is trying to look at values over time
 Use the dataframe from [build_summary()] to produce t-scores
 }
