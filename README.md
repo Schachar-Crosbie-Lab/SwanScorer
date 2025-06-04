@@ -30,16 +30,16 @@ Our first step is to prepare your raw SWAN data.
 
     <div>
 
-    <table style="width:46%;">
+    <table style="width:50%;">
     <colgroup>
-    <col style="width: 15%" />
-    <col style="width: 15%" />
-    <col style="width: 15%" />
+    <col style="width: 16%" />
+    <col style="width: 16%" />
+    <col style="width: 16%" />
     </colgroup>
     <thead>
     <tr>
     <th>Column Name</th>
-    <th>Ad ditional Inf ormation</th>
+    <th>A dditional in formation</th>
     <th>Values</th>
     </tr>
     </thead>
@@ -56,19 +56,19 @@ Our first step is to prepare your raw SWAN data.
     <p>2 = Female</p></td>
     </tr>
     <tr>
-    <td>p_re spondent</td>
+    <td>p_r espondent</td>
     <td>Whether the survey was filled out by the parent or the child</td>
-    <td><p>1 = Parent R e spondent</p>
-    <p>0 = Child / Youth Self R e spondent</p></td>
+    <td><p>1 = Parent R espondent</p>
+    <p>0 = Child / Youth Self R espondent</p></td>
     </tr>
     <tr>
     <td>swan1</td>
-    <td>1. Give close a ttention to detail and avoid careless mistakes</td>
+    <td>1. Give close attention to detail and avoid careless mistakes</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan2</td>
-    <td>2. Sustain a ttention on tasks and play a c tivities</td>
+    <td>2. Sustain attention on tasks and play a ctivities</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
@@ -78,132 +78,62 @@ Our first step is to prepare your raw SWAN data.
     </tr>
     <tr>
     <td>swan4</td>
-    <td>4. Follow through on i n s t ructions and finish s c hoolwork /
+    <td>4. Follow through on i n s tructions and finish s choolwork /
     chores</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan5</td>
-    <td>5. Organize tasks and a c tivities</td>
+    <td>5. Organize tasks and a ctivities</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan6</td>
-    <td>6. Engage in tasks that require s ustained mental effort</td>
+    <td>6. Engage in tasks that require sustained mental effort</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan7</td>
-    <td>7. Keep track of things n ecessary for a c tivities</td>
+    <td>7. Keep track of things necessary for a ctivities</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan8</td>
-    <td>8. Ignore e x traneous stimuli (able to ignore b a ckground n o i s
-    e / d i s t r actions)</td>
+    <td>8. Ignore e xtraneous stimuli (able to ignore b ackground n
+    oise/dist ractions)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan9</td>
-    <td>9. Remember daily a c tivities</td>
+    <td>9. Remember daily a ctivities</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan10</td>
-    <td>10. Sit still (control m ovements of hands / feet or control s q
-    uirming)</td>
+    <td>10. Sit still (control movements of hands / feet or control s
+    quirming)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan11</td>
-    <td>11. Stay seated (when required by class rules / social c o n v
-    entions)</td>
+    <td>11. Stay seated (when required by class rules / social con
+    ventions)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    </tr>
-    <tr>
     <td>swan12</td>
-    <td>12. Modulate motor activity (inhibit i n a p p ropriate running / c
-    limbing)</td>
+    <td>12. Modulate motor activity (inhibit inap propriate running /
+    climbing)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan13</td>
-    <td>13. Play quietly (keep noise level r e a sonable)</td>
+    <td>13. Play quietly (keep noise level re asonable)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
     <td>swan14</td>
-    <td>14. Settle down and rest (control constant a ctivity)</td>
+    <td>14. Settle down and rest (control constant activity)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
@@ -213,7 +143,7 @@ Our first step is to prepare your raw SWAN data.
     </tr>
     <tr>
     <td>swan16</td>
-    <td>16. Reflect on q uestions (control blurting out answers)</td>
+    <td>16. Reflect on questions (control blurting out answers)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     <tr>
@@ -223,8 +153,8 @@ Our first step is to prepare your raw SWAN data.
     </tr>
     <tr>
     <td>swan18</td>
-    <td>18. Enter into c o n v e rsations and games (control i n t e
-    rrupting / i n truding)</td>
+    <td>18. Enter into conv ersations and games (control int errupting / i
+    ntruding)</td>
     <td>-3 (Far Below) to 3 (Far Above)</td>
     </tr>
     </tbody>
