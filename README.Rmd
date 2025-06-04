@@ -45,147 +45,198 @@ Our first step is to prepare your raw SWAN data.
 
     <div>
 
-    +--------------+--------------+--------------+
-    | Column Name  | Additional   | Values       |
-    |              | Information  |              |
-    +==============+==============+==============+
-    | age          | The child's  | 5 - 18       |
-    |              | age          |              |
-    +--------------+--------------+--------------+
-    | gender       | The child's  | 1 = Male     |
-    |              | gender       |              |
-    |              |              | 2 = Female   |
-    +--------------+--------------+--------------+
-    | p_respondent | Whether the  | 1 = Parent   |
-    |              | survey was   | Respondent   |
-    |              | filled out   |              |
-    |              | by the       | 0 = Child /  |
-    |              | parent or    | Youth Self   |
-    |              | the child    | Respondent   |
-    +--------------+--------------+--------------+
-    | swan1        | 1\. Give     | -3 (Far      |
-    |              | close        | Below) to 3  |
-    |              | attention to | (Far Above)  |
-    |              | detail and   |              |
-    |              | avoid        |              |
-    |              | careless     |              |
-    |              | mistakes     |              |
-    +--------------+--------------+--------------+
-    | swan2        | 2\. Sustain  | -3 (Far      |
-    |              | attention on | Below) to 3  |
-    |              | tasks and    | (Far Above)  |
-    |              | play         |              |
-    |              | activities   |              |
-    +--------------+--------------+--------------+
-    | swan3        | 3\. Listen   | -3 (Far      |
-    |              | when spoken  | Below) to 3  |
-    |              | to directly  | (Far Above)  |
-    +--------------+--------------+--------------+
-    | swan4        | 4\. Follow   | -3 (Far      |
-    |              | through on   | Below) to 3  |
-    |              | instructions | (Far Above)  |
-    |              | and finish   |              |
-    |              | schoolwork / |              |
-    |              | chores       |              |
-    +--------------+--------------+--------------+
-    | swan5        | 5\. Organize | -3 (Far      |
-    |              | tasks and    | Below) to 3  |
-    |              | activities   | (Far Above)  |
-    +--------------+--------------+--------------+
-    | swan6        | 6\. Engage   | -3 (Far      |
-    |              | in tasks     | Below) to 3  |
-    |              | that require | (Far Above)  |
-    |              | sustained    |              |
-    |              | mental       |              |
-    |              | effort       |              |
-    +--------------+--------------+--------------+
-    | swan7        | 7\. Keep     | -3 (Far      |
-    |              | track of     | Below) to 3  |
-    |              | things       | (Far Above)  |
-    |              | necessary    |              |
-    |              | for          |              |
-    |              | activities   |              |
-    +--------------+--------------+--------------+
-    | swan8        | 8\. Ignore   | -3 (Far      |
-    |              | extraneous   | Below) to 3  |
-    |              | stimuli      | (Far Above)  |
-    |              | (able to     |              |
-    |              | ignore       |              |
-    |              | background n |              |
-    |              | o i s e /    |              |
-    |              | d            |              |
-    |              | istractions) |              |
-    +--------------+--------------+--------------+
-    | swan9        | 9\. Remember | -3 (Far      |
-    |              | daily        | Below) to 3  |
-    |              | activities   | (Far Above)  |
-    +--------------+--------------+--------------+
-    | swan10       | 10\. Sit     | -3 (Far      |
-    |              | still        | Below) to 3  |
-    |              | (control     | (Far Above)  |
-    |              | movements of |              |
-    |              | hands / feet |              |
-    |              | or control   |              |
-    |              | squirming)   |              |
-    +--------------+--------------+--------------+
-    | swan11       | 11\. Stay    | -3 (Far      |
-    |              | seated (when | Below) to 3  |
-    |              | required by  | (Far Above)  |
-    |              | class rules  |              |
-    |              | / social     |              |
-    |              | conventions) |              |
-    +--------------+--------------+--------------+
-    | swan12       | 12\.         | -3 (Far      |
-    |              | Modulate     | Below) to 3  |
-    |              | motor        | (Far Above)  |
-    |              | activity     |              |
-    |              | (inhibit     |              |
-    |              | i            |              |
-    |              | nappropriate |              |
-    |              | running /    |              |
-    |              | climbing)    |              |
-    +--------------+--------------+--------------+
-    | swan13       | 13\. Play    | -3 (Far      |
-    |              | quietly      | Below) to 3  |
-    |              | (keep noise  | (Far Above)  |
-    |              | level        |              |
-    |              | reasonable)  |              |
-    +--------------+--------------+--------------+
-    | swan14       | 14\. Settle  | -3 (Far      |
-    |              | down and     | Below) to 3  |
-    |              | rest         | (Far Above)  |
-    |              | (control     |              |
-    |              | constant     |              |
-    |              | activity)    |              |
-    +--------------+--------------+--------------+
-    | swan15       | 15\.         | -3 (Far      |
-    |              | Modulate     | Below) to 3  |
-    |              | verbal       | (Far Above)  |
-    |              | activity     |              |
-    |              | (control     |              |
-    |              | excess       |              |
-    |              | talking)     |              |
-    +--------------+--------------+--------------+
-    | swan16       | 16\. Reflect | -3 (Far      |
-    |              | on questions | Below) to 3  |
-    |              | (control     | (Far Above)  |
-    |              | blurting out |              |
-    |              | answers)     |              |
-    +--------------+--------------+--------------+
-    | swan17       | 17\. Await   | -3 (Far      |
-    |              | turn (stand  | Below) to 3  |
-    |              | in line and  | (Far Above)  |
-    |              | take turns)  |              |
-    +--------------+--------------+--------------+
-    | swan18       | 18\. Enter   | -3 (Far      |
-    |              | into         | Below) to 3  |
-    |              | c            | (Far Above)  |
-    |              | onversations |              |
-    |              | and games    |              |
-    |              | (control     |              |
-    |              | interrupting |              |
-    |              | / intruding) |              |
-    +--------------+--------------+--------------+
+    +-----------+-----------+-----------+
+    | Column    | A         | Values    |
+    | Name      | dditional |           |
+    |           | I         |           |
+    |           | n         |           |
+    |           | formation |           |
+    +===========+===========+===========+
+    | age       | The       | 5 - 18    |
+    |           | child's   |           |
+    |           | age       |           |
+    +-----------+-----------+-----------+
+    | gender    | The       | 1 = Male  |
+    |           | child's   |           |
+    |           | gender    | 2 =       |
+    |           |           | Female    |
+    +-----------+-----------+-----------+
+    | p \_      | Whether   | 1 =       |
+    | r         | the       | Parent    |
+    | espondent | survey    | R         |
+    |           | was       | espondent |
+    |           | filled    |           |
+    |           | out by    | 0 = Child |
+    |           | the       | / Youth   |
+    |           | parent or | Self      |
+    |           | the child | R         |
+    |           |           | espondent |
+    +-----------+-----------+-----------+
+    | swan1     | 1\. Give  | -3 (Far   |
+    |           | close     | Below) to |
+    |           | attention | 3 (Far    |
+    |           | to detail | Above)    |
+    |           | and avoid |           |
+    |           | careless  |           |
+    |           | mistakes  |           |
+    +-----------+-----------+-----------+
+    | swan2     | 2\.       | -3 (Far   |
+    |           | Sustain   | Below) to |
+    |           | attention | 3 (Far    |
+    |           | on tasks  | Above)    |
+    |           | and play  |           |
+    |           | a         |           |
+    |           | ctivities |           |
+    +-----------+-----------+-----------+
+    | swan3     | 3\.       | -3 (Far   |
+    |           | Listen    | Below) to |
+    |           | when      | 3 (Far    |
+    |           | spoken to | Above)    |
+    |           | directly  |           |
+    +-----------+-----------+-----------+
+    | swan4     | 4\.       | -3 (Far   |
+    |           | Follow    | Below) to |
+    |           | through   | 3 (Far    |
+    |           | on i n    | Above)    |
+    |           | s         |           |
+    |           | tructions |           |
+    |           | and       |           |
+    |           | finish    |           |
+    |           | s         |           |
+    |           | choolwork |           |
+    |           | / chores  |           |
+    +-----------+-----------+-----------+
+    | swan5     | 5\.       | -3 (Far   |
+    |           | Organize  | Below) to |
+    |           | tasks and | 3 (Far    |
+    |           | a         | Above)    |
+    |           | ctivities |           |
+    +-----------+-----------+-----------+
+    | swan6     | 6\.       | -3 (Far   |
+    |           | Engage in | Below) to |
+    |           | tasks     | 3 (Far    |
+    |           | that      | Above)    |
+    |           | require   |           |
+    |           | sustained |           |
+    |           | mental    |           |
+    |           | effort    |           |
+    +-----------+-----------+-----------+
+    | swan7     | 7\. Keep  | -3 (Far   |
+    |           | track of  | Below) to |
+    |           | things    | 3 (Far    |
+    |           | necessary | Above)    |
+    |           | for       |           |
+    |           | a         |           |
+    |           | ctivities |           |
+    +-----------+-----------+-----------+
+    | swan8     | 8\.       | -3 (Far   |
+    |           | Ignore    | Below) to |
+    |           | e         | 3 (Far    |
+    |           | xtraneous | Above)    |
+    |           | stimuli   |           |
+    |           | (able to  |           |
+    |           | ignore    |           |
+    |           | b         |           |
+    |           | ackground |           |
+    |           | n o i s e |           |
+    |           | / d i s   |           |
+    |           | t         |           |
+    |           | ractions) |           |
+    +-----------+-----------+-----------+
+    | swan9     | 9\.       | -3 (Far   |
+    |           | Remember  | Below) to |
+    |           | daily     | 3 (Far    |
+    |           | a         | Above)    |
+    |           | ctivities |           |
+    +-----------+-----------+-----------+
+    | swan10    | 10\. Sit  | -3 (Far   |
+    |           | still     | Below) to |
+    |           | (control  | 3 (Far    |
+    |           | movements | Above)    |
+    |           | of hands  |           |
+    |           | / feet or |           |
+    |           | control   |           |
+    |           | s         |           |
+    |           | quirming) |           |
+    +-----------+-----------+-----------+
+    | swan11    | 11\. Stay | -3 (Far   |
+    |           | seated    | Below) to |
+    |           | (when     | 3 (Far    |
+    |           | required  | Above)    |
+    |           | by class  |           |
+    |           | rules /   |           |
+    |           | social c  |           |
+    |           | o         |           |
+    |           | n         |           |
+    |           | ventions) |           |
+    +-----------+-----------+-----------+
+    | swan12    | 12\.      | -3 (Far   |
+    |           | Modulate  | Below) to |
+    |           | motor     | 3 (Far    |
+    |           | activity  | Above)    |
+    |           | (inhibit  |           |
+    |           | i n a     |           |
+    |           | p         |           |
+    |           | propriate |           |
+    |           | running / |           |
+    |           | climbing) |           |
+    +-----------+-----------+-----------+
+    | swan13    | 13\. Play | -3 (Far   |
+    |           | quietly   | Below) to |
+    |           | (keep     | 3 (Far    |
+    |           | noise     | Above)    |
+    |           | level r   |           |
+    |           | e         |           |
+    |           | asonable) |           |
+    +-----------+-----------+-----------+
+    | swan14    | 14\.      | -3 (Far   |
+    |           | Settle    | Below) to |
+    |           | down and  | 3 (Far    |
+    |           | rest      | Above)    |
+    |           | (control  |           |
+    |           | constant  |           |
+    |           | activity) |           |
+    +-----------+-----------+-----------+
+    | swan15    | 15\.      | -3 (Far   |
+    |           | Modulate  | Below) to |
+    |           | verbal    | 3 (Far    |
+    |           | activity  | Above)    |
+    |           | (control  |           |
+    |           | excess    |           |
+    |           | talking)  |           |
+    +-----------+-----------+-----------+
+    | swan16    | 16\.      | -3 (Far   |
+    |           | Reflect   | Below) to |
+    |           | on        | 3 (Far    |
+    |           | questions | Above)    |
+    |           | (control  |           |
+    |           | blurting  |           |
+    |           | out       |           |
+    |           | answers)  |           |
+    +-----------+-----------+-----------+
+    | swan17    | 17\.      | -3 (Far   |
+    |           | Await     | Below) to |
+    |           | turn      | 3 (Far    |
+    |           | (stand in | Above)    |
+    |           | line and  |           |
+    |           | take      |           |
+    |           | turns)    |           |
+    +-----------+-----------+-----------+
+    | swan18    | 18\.      | -3 (Far   |
+    |           | Enter     | Below) to |
+    |           | into c o  | 3 (Far    |
+    |           | n         | Above)    |
+    |           | v         |           |
+    |           | ersations |           |
+    |           | and games |           |
+    |           | (control  |           |
+    |           | i n       |           |
+    |           | t         |           |
+    |           | errupting |           |
+    |           | /         |           |
+    |           | i         |           |
+    |           | ntruding) |           |
+    +-----------+-----------+-----------+
 
     </div>
 
@@ -241,32 +292,84 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 
 ## Understanding the Output
 
-+----------------------------------+----------------------------------+
-| Column                           | Description                      |
-+==================================+==================================+
-| swan_gender_tscores              | A t-score across the full SWAN   |
-|                                  | test that adjusts for age,       |
-|                                  | respondent, and gender           |
-+----------------------------------+----------------------------------+
-| swan_tscores                     | A t-score across the full SWAN   |
-|                                  | test that adjusts for age and    |
-|                                  | respondent                       |
-+----------------------------------+----------------------------------+
-| swan_ia_gender_tscores           | A t-score of the inattentive     |
-|                                  | subdomain (questions 1-9) that   |
-|                                  | adjusts for age, respondent, and |
-|                                  | gender                           |
-+----------------------------------+----------------------------------+
-| swan_ia_tscores                  | A t-score of the inattentive     |
-|                                  | subdomain (questions 1-9) that   |
-|                                  | adjusts for age and respondent   |
-+----------------------------------+----------------------------------+
-| swan_hi_gender_tscores           | A t-score of the hyperactive     |
-|                                  | subdomain (questions 10-18) that |
-|                                  | adjusts for age, respondent, and |
-|                                  | gender                           |
-+----------------------------------+----------------------------------+
-| swan_hi_tscores                  | A t-score of the hyperactive     |
-|                                  | subdomain (questions 10-18) that |
-|                                  | adjusts for age and respondent   |
-+----------------------------------+----------------------------------+
+### T-scores for generic model
+
++-------------------------------+-------------------------------+
+| Column                        | Description                   |
++===============================+===============================+
+| swan_gender_tscores           | A t-score across the full     |
+|                               | SWAN test that adjusts for    |
+|                               | age, respondent, and gender   |
++-------------------------------+-------------------------------+
+| swan_tscores                  | A t-score across the full     |
+|                               | SWAN test that adjusts for    |
+|                               | age and respondent            |
++-------------------------------+-------------------------------+
+| swan_ia_gender_tscores        | A t-score of the inattentive  |
+|                               | subdomain (questions 1-9)     |
+|                               | that adjusts for age,         |
+|                               | respondent, and gender        |
++-------------------------------+-------------------------------+
+| swan_ia_tscores               | A t-score of the inattentive  |
+|                               | subdomain (questions 1-9)     |
+|                               | that adjusts for age and      |
+|                               | respondent                    |
++-------------------------------+-------------------------------+
+| swan_hi_gender_tscores        | A t-score of the hyperactive  |
+|                               | subdomain (questions 10-18)   |
+|                               | that adjusts for age,         |
+|                               | respondent, and gender        |
++-------------------------------+-------------------------------+
+| swan_hi_tscores               | A t-score of the hyperactive  |
+|                               | subdomain (questions 10-18)   |
+|                               | that adjusts for age and      |
+|                               | respondent                    |
++-------------------------------+-------------------------------+
+
+### T-scores for longitudinal model
+
++-------------------------------+-------------------------------+
+| Column                        | Description                   |
++===============================+===============================+
+| swan_gender_time_tscores      | A t-score across the full     |
+|                               | SWAN test that adjusts for    |
+|                               | age, respondent, and gender   |
++-------------------------------+-------------------------------+
+| swan_time_tscores             | A t-score across the full     |
+|                               | SWAN test that adjusts for    |
+|                               | age and respondent            |
++-------------------------------+-------------------------------+
+| swan_ia_gender_time_tscores   | A t-score of the inattentive  |
+|                               | subdomain (questions 1-9)     |
+|                               | that adjusts for age,         |
+|                               | respondent, and gender        |
++-------------------------------+-------------------------------+
+| swan_ia_time_tscores          | A t-score of the inattentive  |
+|                               | subdomain (questions 1-9)     |
+|                               | that adjusts for age and      |
+|                               | respondent                    |
++-------------------------------+-------------------------------+
+| swan_hi_gender_time_tscores   | A t-score of the hyperactive  |
+|                               | subdomain (questions 10-18)   |
+|                               | that adjusts for age,         |
+|                               | respondent, and gender        |
++-------------------------------+-------------------------------+
+| swan_hi_time_tscores          | A t-score of the hyperactive  |
+|                               | subdomain (questions 10-18)   |
+|                               | that adjusts for age and      |
+|                               | respondent                    |
++-------------------------------+-------------------------------+
+
+### Summary values regardless of model
+
+| Column | Description |
+|----|----|
+| swan_tot | A summed score of the answered questions across the whole test |
+| swan_miss | A count of missing values across the whole test |
+| swan_pro | A prorated score by dividing swan_tot by the number of answered questions across the whole test |
+| swan_ia_tot | A summed score of the answered questions across the inattentive subdomain |
+| swan_ia_miss | A count of missing values across the inattentive subdomain |
+| swan_ia_pro | A prorated score by dividing swan_tot by the number of answered questions across the inattentive subdomain |
+| swan_hi_tot | A summed score of the answered questions across the hyperactive subdomain |
+| swan_hi_miss | A count of missing values across the hyperactive subdomain |
+| swan_hi_pro | A prorated score by dividing swan_tot by the number of answered questions across the hyperactive subdomain |

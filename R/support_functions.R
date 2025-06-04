@@ -173,7 +173,7 @@ mkpro <- function(maxmiss = NA, dat = NA, a = NULL, b = NULL, root = 'swan', new
 #'
 #' @title Build Totals and Prorated Totals for Full Test and Subdomains
 #'
-#' @description Use the dataframe from [clean_file()] and the [mkpro()] functionto calculate totals, missingness, and pro-rated totals
+#' @description Use the dataframe from [clean_file()] and the [mkpro()] function to calculate totals, missingness, and pro-rated totals
 #' for the total test and subdomains
 #'
 #' @importFrom dplyr mutate
