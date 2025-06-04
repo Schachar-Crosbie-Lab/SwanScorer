@@ -40,8 +40,8 @@ Our first step is to prepare your raw SWAN data.
 2.  Be sure the following columns are present in the spreadsheet and
     rename the columns to match the reference guide below. All of the
     following columns are necessary for the model. If age, gender, or
-    parent_respondent are missing from a row, the model will not return
-    a t-score for that row.
+    p_respondent are missing from a row, the model will not return a
+    t-score for that row.
 
     <div>
 
