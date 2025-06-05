@@ -157,8 +157,8 @@ mkpro <- function(maxmiss = NA, dat = NA, a = NULL, b = NULL, root = 'swan', new
   if (is.na(maxmiss))
     maxmiss <- n
 
-  pro <- ifelse(miss >= maxmiss, NA, pro)
-  tot <- ifelse(miss >= maxmiss, NA, tot)
+  pro <- ifelse(miss > maxmiss, NA, pro)
+  tot <- ifelse(miss > maxmiss, NA, tot)
 
   allvars <- cbind(tot, miss, pro)
   colnames(allvars) <-
@@ -184,6 +184,9 @@ mkpro <- function(maxmiss = NA, dat = NA, a = NULL, b = NULL, root = 'swan', new
 #'
 build_summary <- function(df = NULL) {
 
+  ia_subdomain <- mkvars(1,9, 'swan')
+  hi_subdomain <- mkvars(10, 18, 'swan')
+
   df_tot <- df |>
     dplyr::mutate(age18 = dplyr::case_when(age < 18 ~ age,
                                            age >= 18 ~ 18,
@@ -194,17 +197,31 @@ build_summary <- function(df = NULL) {
                                            age >= 12 ~ 1,
                                            T ~ NA)) |>
     # Reverse scores
-    dplyr::mutate(dplyr::across(dplyr::contains("swan"),
+    dplyr::mutate(dplyr::across(c(ia_subdomain, hi_subdomain),
                          ~-1*.x))
 
+  # Count Inattentive Missingness
+  df_tot$ia_missing <- apply(df_tot[, ia_subdomain], 1 , function(x)
+    sum(is.na(x)))
+
+  # Count Hyperactive Missingness
+  df_tot$hi_missing <- apply(df_tot[, hi_subdomain], 1 , function(x)
+    sum(is.na(x)))
+
+
   #Whole test scores
-  df_tot <- cbind(df_tot, mkpro(dat = df, a = 1, b = 18))
+  df_tot <- cbind(df_tot, mkpro(dat = df_tot, a = 1, b = 18)) |>
+    # If a subdomain is missing more than one, mark as NA
+    dplyr::mutate(dplyr::across(c('swan_tot','swan_pro'),
+                  ~ dplyr::case_when(ia_missing > 1 | hi_missing > 1 ~ NA,
+                              T ~ .)))
+
 
   #Inattentive
-  df_tot <- cbind(df_tot, mkpro(dat = df, a = 1, b = 9, newroot = 'swan_ia'))
+  df_tot <- cbind(df_tot, mkpro(dat = df_tot, a = 1, b = 9, newroot = 'swan_ia', maxmiss = 1))
 
   #Hyperactive
-  df_tot <- cbind(df_tot, mkpro(dat = df, a = 10, b = 18, newroot = 'swan_hi'))
+  df_tot <- cbind(df_tot, mkpro(dat = df_tot, a = 10, b = 18, newroot = 'swan_hi', maxmiss = 1))
 
   return(df_tot = df_tot)
 

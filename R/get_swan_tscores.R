@@ -33,11 +33,12 @@ get_swan_tscores <- function(file = NULL, output_folder = NULL) {
   summary <- build_summary(check)
 
   # Run the model
-  score <- run_model(summary) |>
-    dplyr::select(-age18, female, youth)
+  score <- run_model(summary)
 
   # Print a summary in the console
-  message(paste0("The model scored ",sum(!is.na(score$swan_gender_study_tscores))," observations."))
+  message(paste0("The model scored ",sum(!is.na(score$swan_gender_study_tscores))," observations. \n \n",
+                 sum(score$ia_missing > 1 | score$hi_missing > 1)," observations were not scored due to excessive missingness. ",
+                 "Only one question can be missing per subdomain."))
   print(
     score |>
       dplyr::group_by(gender, youth, p_respondent) |>
@@ -45,6 +46,9 @@ get_swan_tscores <- function(file = NULL, output_folder = NULL) {
                        mean = mean(swan_gender_study_tscores, na.rm = T),
                        sd = sd(swan_gender_study_tscores, na.rm = T))
   )
+
+  score <- score |>
+    dplyr::select(-c('age18','youth','female'))
 
   # Save file if specified
   if(!is.null(output_folder)){
