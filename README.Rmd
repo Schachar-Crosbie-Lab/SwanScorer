@@ -28,6 +28,10 @@ attention-deficit/hyperactivity disorder (ADHD) traits ([Burton et al.,
 2018](https://doi.org/10.1101/248484)). The SwanScorer package provides
 an easy way to automatically score your SWAN tests.
 
+## Notes about the data
+
+-   Scores are automatically reversed before calculating t-score so that a higher score is associated with higher ADHD trait
+
 ## Instructions
 
 ### Formatting Your Data
