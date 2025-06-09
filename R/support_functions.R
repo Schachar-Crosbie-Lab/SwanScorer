@@ -7,7 +7,7 @@
 }
 
 #### Global Variables ####
-globalVariables(c("value",'swan_gender_study_tscores','sd',
+globalVariables(c("value",'swan_tot_gender_tscores','sd',
                   'swan1','swan2','swan3','swan4','swan5','swan6','swan7','swan8','swan9',
                   'swan10','swan11','swan12','swan13','swan14','swan15','swan16','swan17','swan18',
                   'age','gender','p_respondent',
@@ -200,28 +200,21 @@ build_summary <- function(df = NULL) {
     dplyr::mutate(dplyr::across(c(ia_subdomain, hi_subdomain),
                          ~-1*.x))
 
-  # Count Inattentive Missingness
-  df_tot$ia_missing <- apply(df_tot[, ia_subdomain], 1 , function(x)
-    sum(is.na(x)))
-
-  # Count Hyperactive Missingness
-  df_tot$hi_missing <- apply(df_tot[, hi_subdomain], 1 , function(x)
-    sum(is.na(x)))
-
-
-  #Whole test scores
-  df_tot <- cbind(df_tot, mkpro(dat = df_tot, a = 1, b = 18)) |>
-    # If a subdomain is missing more than one, mark as NA
-    dplyr::mutate(dplyr::across(c('swan_tot','swan_pro'),
-                  ~ dplyr::case_when(ia_missing > 1 | hi_missing > 1 ~ NA,
-                              T ~ .)))
-
-
   #Inattentive
   df_tot <- cbind(df_tot, mkpro(dat = df_tot, a = 1, b = 9, newroot = 'swan_ia', maxmiss = 1))
 
   #Hyperactive
   df_tot <- cbind(df_tot, mkpro(dat = df_tot, a = 10, b = 18, newroot = 'swan_hi', maxmiss = 1))
+
+  #Whole test scores
+  df_tot <- cbind(df_tot, mkpro(dat = df_tot, a = 1, b = 18)) |>
+    # If a subdomain is missing more than one, mark as NA
+    dplyr::mutate(dplyr::across(c('swan_tot','swan_pro'),
+                  ~ dplyr::case_when(swan_ia_miss > 1 | swan_hi_miss > 1 ~ NA,
+                              T ~ .)))
+
+
+
 
   return(df_tot = df_tot)
 
@@ -288,7 +281,7 @@ run_model <- function(df = NULL) {
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_gender_study_tscores
+           df$swan_tot_gender_tscores
     )
 
  #### Full Test Across Gender
@@ -320,7 +313,7 @@ run_model <- function(df = NULL) {
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_study_tscores
+           df$swan_tot_tscores
     )
 
   #### Inattentive Models with gender
@@ -368,7 +361,7 @@ run_model <- function(df = NULL) {
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_ia_gender_study_tscores
+           df$swan_ia_gender_tscores
     )
 
   #### Inattentive across gender
@@ -400,7 +393,7 @@ run_model <- function(df = NULL) {
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_ia_study_tscores
+           df$swan_ia_tscores
     )
 
 
@@ -452,7 +445,7 @@ run_model <- function(df = NULL) {
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_hi_gender_study_tscores
+           df$swan_hi_gender_tscores
     )
 
   #### Hyperactive across Gender
@@ -485,7 +478,7 @@ run_model <- function(df = NULL) {
     ifelse((df$age18 < 12) &
              (df$p_respondent == 0),
            NA,
-           df$swan_hi_study_tscores
+           df$swan_hi_tscores
     )
 
   return(df = df)

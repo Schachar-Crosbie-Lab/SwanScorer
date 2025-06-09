@@ -15,8 +15,17 @@ an easy way to automatically score your SWAN tests.
 
 ## Notes about the data
 
+- Any additional columns in the spreadsheet, i.e. an identifier, will
+  remain untouched in the output. As an example, if your input file has
+  two additional columns, an identifier and parent’s education, those
+  column will pass through to the output file.
+
 - Scores are automatically reversed before calculating t-score so that a
-  higher score is associated with higher ADHD trait
+  higher score is associated with higher ADHD trait.
+
+- The test is split into two subdomains. Questions 1-9 measure
+  inattentiveness. Questions 10-18 measure hyperactivity. If more than
+  one question is missing from a subdomain the test will not be scored.
 
 ## Instructions
 
@@ -60,9 +69,6 @@ Our first step is to prepare your raw SWAN data.
     | swan18 | 18\. Enter into conversations and games (control interrupting / intruding) | -3 (Far Below) to 3 (Far Above) |
 
     </div>
-
-3.  Any additional columns in the spreadsheet, i.e. an identifier, will
-    remain untouched in the spreadsheet
 
 ### Installation
 
@@ -111,17 +117,6 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 
 ## Understanding the Output
 
-### T-scores for generic model
-
-| Column | Description |
-|----|----|
-| swan_gender_study_tscores | A t-score across the entire SWAN test that adjusts for age, respondent, and gender |
-| swan_study_tscores | A t-score across the entire SWAN test that adjusts for age and respondent |
-| swan_ia_gender_study_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age, respondent, and gender |
-| swan_ia_study_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age and respondent |
-| swan_hi_gender_study_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age, respondent, and gender |
-| swan_hi_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age and respondent |
-
 ### Summary Values
 
 | Column | Description |
@@ -135,3 +130,14 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 | swan_hi_tot | A summed score of the answered questions across the hyperactive subdomain |
 | swan_hi_miss | A count of missing values across the hyperactive subdomain |
 | swan_hi_pro | A prorated score by dividing swan_tot by the number of answered questions across the hyperactive subdomain |
+
+### T-scores for generic model
+
+| Column | Description |
+|----|----|
+| swan_tot_gender_tscores | A t-score across the entire SWAN test that adjusts for age, respondent, and gender |
+| swan_tot_tscores | A t-score across the entire SWAN test that adjusts for age and respondent |
+| swan_ia_gender_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age, respondent, and gender |
+| swan_ia_tscores | A t-score of the inattentive subdomain (questions 1-9) that adjusts for age and respondent |
+| swan_hi_gender_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age, respondent, and gender |
+| swan_hi_tscores | A t-score of the hyperactive subdomain (questions 10-18) that adjusts for age and respondent |
