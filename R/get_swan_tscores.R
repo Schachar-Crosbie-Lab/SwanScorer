@@ -33,7 +33,7 @@ get_swan_tscores <- function(file = NULL, output_folder = NULL) {
   summary <- build_summary(check)
 
   # Run the model
-  score <- run_model_old(summary)
+  score <- run_model(summary)
 
   # Print a summary in the console
   message(paste0("The model scored ",sum(!is.na(score$swan_tot_gender_tscores))," observations. \n \n",
