@@ -27,12 +27,12 @@ an easy way to automatically score your SWAN tests.
   inattentiveness. Questions 10-18 measure hyperactivity. If more than
   one question is missing from a subdomain the test will not be scored.
 
-- A set t-scores will be generated based on gendered and non-gendered
-  norms. Please feel free to include children who are trans or
-  non-binary in your dataset and code gender as appropriate for your
-  study. Non-gendered t-scores will be generated for all individuals. To
-  generate gendered t-scores be sure to code gender as 1 = Male and 2 =
-  Female.
+- T-scores will be generated based on gendered and non-gendered norms.
+  Please feel free to include children who are trans or non-binary in
+  your dataset and leave the codes for their gender as appropriate for
+  the individuals in your study. Non-gendered t-scores will be generated
+  for all individuals. To generate gendered t-scores for binary gendered
+  participants be sure to code gender as 1 = Male and 2 = Female.
 
 ## Instructions
 
@@ -54,7 +54,7 @@ Our first step is to prepare your raw SWAN data.
     | Column Name | Additional Information | Example |
     |----|----|----|
     | age | The child’s age | 5 - 18 |
-    | gender | The child’s gender. Please feel free to include children who are trans or non-binary in your dataset and code gender as appropriate for your study. Non-gendered t-scores will be generated for all individuals. To generate gendered t-scores be sure to code gender as 1 = Male and 2 = Female. | 1 = Male, 2 = Female |
+    | gender | The child’s gender. Please feel free to include children who are trans or non-binary in your dataset and leave the codes for their gender as appropriate for the individuals in your study. Non-gendered t-scores will be generated for all individuals. To generate gendered t-scores for binary gendered participants be sure to code gender as 1 = Male and 2 = Female | 1 = Male, 2 = Female |
     | p_respondent | Whether the survey was filled out by the parent or the child | 1 = Parent Respondent, 0 = Child / Youth Self-Respondent |
     | swan1 | 1\. Give close attention to detail and avoid careless mistakes | -3 (Far Below) to 3 (Far Above) |
     | swan2 | 2\. Sustain attention on tasks and play activities | -3 (Far Below) to 3 (Far Above) |
