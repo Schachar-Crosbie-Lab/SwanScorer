@@ -2,7 +2,7 @@
 #'
 #' @title Run analysis on SWAN raw values to return t-scores
 #'
-#' @description Write more detailed when finished
+#' @description get_swan_tscores() returns gendered and non-gendered t-scores for the Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) assessment
 #'
 #' @param file Pathway to formatted raw SWAN scores
 #' @param output_folder Optional parameter, to export a csv file of the t-scores

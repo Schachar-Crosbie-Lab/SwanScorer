@@ -15,5 +15,5 @@ get_swan_tscores(file = NULL, output_folder = NULL)
 table with t-scores attached to raw swan values
 }
 \description{
-Write more detailed when finished
+get_swan_tscores() returns gendered and non-gendered t-scores for the Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) assessment
 }
