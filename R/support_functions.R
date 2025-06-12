@@ -121,9 +121,9 @@ clean_file <- function(file_path = NULL) {
 
   # Check gender
   if(!any(unique(df$gender) %in% c('1','2', NA) )){
-    stop(paste("It appears as though some of your gender values are formatted incorrectly. Gender should be coded as... \n",
-               "1 = Male \n",
-               "2 = Female \n"))
+    warning(paste("The package wasn't able to find any gender coded as 1 or 2, and therefore won't generate any gender-based t-scores. If you'd like to generate gender-based t-scores, gender should be coded as... \n",
+               "1 = Boy \n",
+               "2 = Girl \n"))
   }
 
 
