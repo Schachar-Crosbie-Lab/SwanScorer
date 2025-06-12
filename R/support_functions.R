@@ -108,6 +108,12 @@ clean_file <- function(file_path = NULL) {
                "Please correct or remove the rows from the filing before trying again."))
   }
 
+  if(any(!df$p_respondent %in% c(0,1))) {
+
+    stop(paste(sum(!df$p_respondent %in% c(0,1)),"of your records do not have a 1 or 0 for p_respondent.",
+               "Please check that every row has a 0 or 1 for p_respondent where 1 = Parent Respondent and 0 = Child / Youth Self-Respondent. p_respondent is reqired to generate a t-score."))
+  }
+
   # Check that Age is formatted correctly
   if(any(df$age >= 19)){
     stop(paste("Some of your records have an age above 18. T-scores are applicable only for individuals aged 5-18.",
@@ -120,7 +126,7 @@ clean_file <- function(file_path = NULL) {
   }
 
   # Check gender
-  if(!any(unique(df$gender) %in% c('1','2', NA) )){
+  if(!any(unique(df$gender) %in% c('1','2') )){
     warning(paste("The package wasn't able to find any gender coded as 1 or 2, and therefore won't generate any gender-based t-scores. If you'd like to generate gender-based t-scores, gender should be coded as... \n",
                "1 = Boy \n",
                "2 = Girl \n"))
