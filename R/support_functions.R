@@ -282,6 +282,9 @@ build_summary <- function(df = NULL) {
 #'
 run_model <- function(df = NULL) {
 
+  ia_subdomain <- mkvars(1,9, 'swan')
+  hi_subdomain <- mkvars(10, 18, 'swan')
+
   #### Produce t-scores with gender
   df_mod <- df |>
     dplyr::mutate(swan_gender_pred = -4.0630359 - 0.3384133  * age18 + 1.7004264 * female + 1.5455007 *
@@ -419,7 +422,15 @@ run_model <- function(df = NULL) {
 
   #### Remove extra columns ####
   df_final <- df_mod |>
-    dplyr::select(-dplyr::contains("pred"), -dplyr::contains("low"), -dplyr::contains("adj"))
+    dplyr::select(-dplyr::contains("pred"), -dplyr::contains("low"), -dplyr::contains("adj")) |>
+    # Reverse scores back to initial input
+    dplyr::mutate(dplyr::across(dplyr::all_of(c(ia_subdomain, hi_subdomain)),
+                                ~-1*.x)) |>
+    # Print columns with reversed scores
+    dplyr::mutate(dplyr::across(dplyr::all_of(c(ia_subdomain, hi_subdomain)),
+                                ~-1*.x,
+                                .names = "{col}_reversed"))
+
 
 
   return(df = df_final)
