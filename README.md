@@ -15,24 +15,28 @@ an easy way to automatically score your SWAN tests.
 
 ## Notes about the data
 
-- Any additional columns in the spreadsheet, i.e. an identifier, will
-  remain untouched in the output. As an example, if your input file has
-  two additional columns, an identifier and parent’s education, those
-  column will pass through to the output file.
+- The `get_swan_tscores()` function will ask you to upload a spreadsheet
+  with your SWAN data. If you have any additional columns beyond the
+  necessary columns described below, i.e. an identifier, those columns
+  will remain untouched in the output. As an example, if your input file
+  has two additional columns, an identifier and parent’s education,
+  those column will pass through to the output file.
 
 - Scores are automatically reversed before calculating t-score so that a
   higher score is associated with higher ADHD trait.
 
 - The test is split into two subdomains. Questions 1-9 measure
-  inattentiveness. Questions 10-18 measure hyperactivity. If more than
-  one question is missing from a subdomain the test will not be scored.
+  inattentiveness. Questions 10-18 measure hyperactivity and
+  impulsivity. If more than one question is missing from a subdomain the
+  test will not be scored.
 
 - T-scores will be generated based on gendered and non-gendered norms.
   Please feel free to include children who are trans or non-binary in
   your dataset and leave the codes for their gender as appropriate for
   the individuals in your study. Non-gendered t-scores will be generated
   for all individuals. To generate gendered t-scores for binary gendered
-  participants be sure to code gender as 1 = boy and 2 = girl.
+  participants be sure to code gender as 1 = boy and 2 = girl. Any
+  gender not coded as 1 or 2 will not receive a gendered t-score.
 
 ## Instructions
 
@@ -54,7 +58,7 @@ Our first step is to prepare your raw SWAN data.
     | Column Name | Additional Information | Example |
     |----|----|----|
     | age | The child’s age | 5 - 18 |
-    | gender | The child’s gender. Please feel free to include children who are trans or non-binary in your dataset and leave the codes for their gender as appropriate for the individuals in your study. Non-gendered t-scores will be generated for all individuals. To generate gendered t-scores for binary gendered participants be sure to code gender as 1 = boy and 2 = girl | 1 = Boy, 2 = Girl |
+    | gender | The child’s gender. Please feel free to include children who are trans or non-binary in your dataset and leave the codes for their gender as appropriate for the individuals in your study. Non-gendered t-scores will be generated for all individuals. To generate gendered t-scores for binary gendered participants be sure to code gender as 1 = boy and 2 = girl | 1 = Boy, 2 = Girl Any gender not coded as 1 or 2 will not receive a gendered t-score. |
     | p_respondent | Whether the survey was filled out by the parent or the child | 1 = Parent Respondent, 0 = Child / Youth Self-Respondent |
     | swan1 | 1\. Give close attention to detail and avoid careless mistakes | -3 (Far Below) to 3 (Far Above) |
     | swan2 | 2\. Sustain attention on tasks and play activities | -3 (Far Below) to 3 (Far Above) |
@@ -123,6 +127,11 @@ swan_tscores <- get_swan_tscores(output_folder = here())
 ```
 
 ## Understanding the Output
+
+### Reversed SWAN Scores
+
+- Columns `swan1` to `swan18` are reverse scored and returned as
+  `swan1_reversed` to `swan18` reversed respectfully.
 
 ### Summary Values
 
