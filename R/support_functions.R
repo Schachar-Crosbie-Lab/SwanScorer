@@ -105,24 +105,25 @@ clean_file <- function(file_path = NULL) {
 
   if(nrow(df_long) > 0){
     stop(paste("There appear to be",nrow(df_long),"values above 3 or below -3 in the file. These are not possible in the SWAN test.",
-               "Please correct or remove the rows from the filing before trying again."))
+               "Please correct or remove the rows from the filing before running the get_swan_tscores() function again."))
   }
 
   if(any(!df$p_respondent %in% c(0,1))) {
 
     stop(paste(sum(!df$p_respondent %in% c(0,1)),"of your records do not have a 1 or 0 for p_respondent.",
-               "Please check that every row has a 0 or 1 for p_respondent where 1 = Parent Respondent and 0 = Child / Youth Self-Respondent. p_respondent is reqired to generate a t-score."))
+               "Please check that every row has a 0 or 1 for p_respondent where 1 = Parent Respondent and 0 = Child / Youth Self-Respondent.",
+               "Once all rows have been corrected try running the get_swan_tscores() function again. p_respondent is reqired to generate a t-score."))
   }
 
   # Check that Age is formatted correctly
   if(any(df$age >= 19)){
     stop(paste("Some of your records have an age above 18. T-scores are applicable only for individuals aged 5-18.",
-               "Please check that ages are correct and remove any 19 or above"))
+               "Please check that ages are correct and remove any records 19 or above before running the get_swan_tscores() function again."))
   }
 
   if(any(df$age < 5)){
     stop(paste("Some of your records have an age below 5. T-scores are applicable only for individuals aged 5-18.",
-               "Please check that ages are correct and records below 5."))
+               "Please check that ages are correct and remove any records below 5  before running the get_swan_tscores() function again."))
   }
 
   # Check gender
