@@ -87,10 +87,10 @@ You can install the development version of SwanScorer from
 [GitHub](https://github.com/jclutton/SwanScorer) with:
 
 ``` r
-# If the pak package isn't installed already, do so first. 
-install.packages("pak")
+# If the devtools package isn't installed already, do so first. 
+install.packages("devtools")
 
-pak::pak("jclutton/SwanScorer")
+devtools::install_github("jclutton/SwanScorer")
 ```
 
 ### Generate Scores
@@ -98,7 +98,10 @@ pak::pak("jclutton/SwanScorer")
 Use the code below to generate your t-scores. First, You will be
 prompted to select your file. Second, we will check that your data are
 formatted properly. And third, t-scores for the full test as well as the
-two subdomains (inattentive and hyperactive) will all be generated
+two subdomains (inattentive and hyperactive) will all be generated.
+
+If you receive an error, please correct the issue in your file, save
+your file, then run the `get_swan_tscores()` function again.
 
 ``` r
 library(SwanScorer)
