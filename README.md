@@ -84,7 +84,7 @@ Our first step is to prepare your raw SWAN data.
 ### Installation
 
 You can install the development version of SwanScorer from
-[GitHub](https://github.com/jclutton/SwanScorer) with:
+[GitHub](https://github.com/jclutton/SwanScorer) using the code below.
 
 ``` r
 # If the devtools package isn't installed already, do so first. 
