@@ -116,7 +116,7 @@ You have the option to specify…
 
 1.  the file path of the input file
 
-2.  a folder to save a output spreadsheet with the t-scores
+2.  a folder to save an output spreadsheet with the t-scores
 
 ``` r
 library(here)
