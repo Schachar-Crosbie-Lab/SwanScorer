@@ -4,8 +4,13 @@
 #'
 #' @description get_swan_tscores() returns gendered and non-gendered t-scores for the Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) assessment
 #'
-#' @param file Pathway to formatted raw SWAN scores
-#' @param output_folder Optional parameter, to export a csv file of the t-scores
+#' @param file Pathway to formatted raw SWAN scores. If left blanka file finder will pop up to allow you to select the file.
+#' @param output_folder Output file pathway
+#'  \enumerate{
+#'  \item Leave blank - This will output a csv file with the t-scores to your working directory
+#'  \item Specify a pathway - This will output a csv file to the specified pathway
+#'  \item Set to `NULL` - This will not output a csv file
+#'  }
 #'
 #' @importFrom rio export
 #' @importFrom lubridate now
@@ -13,6 +18,7 @@
 #' @importFrom dplyr rename
 #' @importFrom stringr str_replace_all
 #' @importFrom stats sd
+#' @importFrom here here
 #'
 #' @returns table with t-scores attached to raw swan values
 #'
@@ -20,7 +26,7 @@
 #'
 #'
 
-get_swan_tscores <- function(file = NULL, output_folder = NULL) {
+get_swan_tscores <- function(file = NULL, output_folder = here::here()) {
 
   if(is.null(file)){
     file <- file.choose()
@@ -37,7 +43,7 @@ get_swan_tscores <- function(file = NULL, output_folder = NULL) {
 
   # Print a summary in the console
   message(paste0("The model scored ",sum(!is.na(score$swan_tot_gender_tscores))," observations. \n \n",
-                 sum(score$ia_missing > 1 | score$hi_missing > 1)," observations were not scored due to excessive missingness. ",
+                 sum(score$swan_ia_miss > 1 | score$swan_hi_miss > 1)," observations were not scored due to excessive missingness. ",
                  "Only one question can be missing per subdomain."))
   print(
     score |>

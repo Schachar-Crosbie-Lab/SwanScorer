@@ -4,12 +4,17 @@
 \alias{get_swan_tscores}
 \title{Run analysis on SWAN raw values to return t-scores}
 \usage{
-get_swan_tscores(file = NULL, output_folder = NULL)
+get_swan_tscores(file = NULL, output_folder = here::here())
 }
 \arguments{
-\item{file}{Pathway to formatted raw SWAN scores}
+\item{file}{Pathway to formatted raw SWAN scores. If left blanka file finder will pop up to allow you to select the file.}
 
-\item{output_folder}{Optional parameter, to export a csv file of the t-scores}
+\item{output_folder}{Output file pathway
+\enumerate{
+\item Leave blank - This will output a csv file with the t-scores to your working directory
+\item Specify a pathway - This will output a csv file to the specified pathway
+\item Set to `NULL` - This will not output a csv file
+}}
 }
 \value{
 table with t-scores attached to raw swan values
