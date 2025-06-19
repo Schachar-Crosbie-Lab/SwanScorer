@@ -10,14 +10,15 @@ Authors@R: c(
     )
   )
 Description: The Strengths and Weaknesses of ADHD Symptoms and Normal Behavior Rating Scale (SWAN) is a is a validated instrument for measuring attention-deficit/hyperactivity disorder (ADHD) traits. This package provides an easy way to automatically score SWAN tests.
-License: GPL-3 + file LICENSE
+License: AGPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/jclutton/SwanScorer
-BugReports: https://github.com/jclutton/SwanScorer/issues
+URL: https://github.com/Schachar-Crosbie-Lab/SwanScorer
+BugReports: https://github.com/Schachar-Crosbie-Lab/SwanScorer/issues
 RoxygenNote: 7.3.2
 Imports: 
     dplyr,
+    here,
     lubridate,
     rio,
     stringr,
