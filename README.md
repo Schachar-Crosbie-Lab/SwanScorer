@@ -18,12 +18,12 @@ an easy way to automatically score your SWAN tests.
 - The `get_swan_tscores()` function will ask you to upload a spreadsheet
   with your SWAN data. If you have any additional columns beyond the
   necessary columns described below, i.e. an identifier, those columns
-  will remain untouched in the output. As an example, if your input file
+  will remain untouched in the output. For example, if your input file
   has two additional columns, an identifier and parent’s education,
-  those column will pass through to the output file.
+  those columns will pass through to the output file.
 
-- Scores are automatically reversed before calculating t-score so that a
-  higher score is associated with higher ADHD trait.
+- Scores are automatically reversed before calculating the t-score so
+  that a higher score is associated with higher ADHD trait.
 
 - The test is split into two subdomains. Questions 1-9 measure
   inattentiveness. Questions 10-18 measure hyperactivity and
@@ -36,6 +36,7 @@ an easy way to automatically score your SWAN tests.
   the individuals in your study. Non-gendered t-scores will be generated
   for all individuals. To generate gendered t-scores for binary gendered
   participants be sure to code gender as 1 = boy and 2 = girl. Any
+  gender not coded as 1 or 2 will not receive a gendered t-score. Any
   gender not coded as 1 or 2 will not receive a gendered t-score.
 
 ## Instructions
@@ -49,7 +50,7 @@ Our first step is to prepare your raw SWAN data.
 
 2.  Be sure the following columns are present in the spreadsheet and
     rename the columns to match the reference guide below. All of the
-    following columns are necessary for the model. If age, gender, or
+    following columns are necessary for the model. If age or
     p_respondent are missing from a row, the model will not return a
     t-score for that row.
 
@@ -57,8 +58,8 @@ Our first step is to prepare your raw SWAN data.
 
     | Column Name | Additional Information | Example |
     |----|----|----|
-    | age | The child’s age | 5 - 18 |
-    | gender | The child’s gender. Please feel free to include children who are trans or non-binary in your dataset and leave the codes for their gender as appropriate for the individuals in your study. Non-gendered t-scores will be generated for all individuals. To generate gendered t-scores for binary gendered participants be sure to code gender as 1 = boy and 2 = girl | 1 = Boy, 2 = Girl Any gender not coded as 1 or 2 will not receive a gendered t-score. |
+    | age | The child’s age | 5 - 18 Note: Age in a numeric form, i.e. with decimals, will provide a more accurate t-score compared to an integer-based age |
+    | gender | The child’s gender. Please feel free to include children who are trans or non-binary in your dataset and leave the codes for their gender as appropriate for the individuals in your study. Non-gendered t-scores will be generated for all individuals. To generate gendered t-scores for binary gendered participants be sure to code gender as 1 = boy and 2 = girl | 1 = Boy, 2 = Girl Note: Any gender not coded as 1 or 2 will not receive a gendered t-score. |
     | p_respondent | Whether the survey was filled out by the parent or the child | 1 = Parent Respondent, 0 = Child / Youth Self-Respondent |
     | swan1 | 1\. Give close attention to detail and avoid careless mistakes | -3 (Far Below) to 3 (Far Above) |
     | swan2 | 2\. Sustain attention on tasks and play activities | -3 (Far Below) to 3 (Far Above) |
@@ -96,11 +97,11 @@ devtools::install_github("Schachar-Crosbie-Lab/SwanScorer")
 
 ### Generate Scores
 
-Use the code below to generate your t-scores. First, You will be
+Use the code below to generate your t-scores. First, you will be
 prompted to select your file. Second, we will check that your data are
 formatted properly. Third, t-scores for the full test as well as the two
-subdomains (inattentive and hyperactive) will all be generated. Fourht,
-a csv file with the t-scores will be saved to your working directory
+subdomains (inattentive and hyperactive) will be generated. Fourth, a
+csv file with the t-scores will be saved to your working directory
 
 If you receive an error, please correct the issue in your file, save
 your file, then run the `get_swan_tscores()` function again.
@@ -139,8 +140,8 @@ swan_tscores <- get_swan_tscores(output_folder = NULL)
 
 ### Reversed SWAN Scores
 
-- Columns `swan1` to `swan18` are reverse scored and returned as
-  `swan1_reversed` to `swan18` reversed respectfully.
+- Columns `swan1` to `swan18` are reverse-scored and returned as
+  `swan1_reversed` to `swan18` reversed respectively.
 
 ### Summary Values
 
