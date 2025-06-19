@@ -98,8 +98,9 @@ devtools::install_github("Schachar-Crosbie-Lab/SwanScorer")
 
 Use the code below to generate your t-scores. First, You will be
 prompted to select your file. Second, we will check that your data are
-formatted properly. And third, t-scores for the full test as well as the
-two subdomains (inattentive and hyperactive) will all be generated.
+formatted properly. Third, t-scores for the full test as well as the two
+subdomains (inattentive and hyperactive) will all be generated. Fourht,
+a csv file with the t-scores will be saved to your working directory
 
 If you receive an error, please correct the issue in your file, save
 your file, then run the `get_swan_tscores()` function again.
@@ -117,17 +118,21 @@ You have the option to specify…
 
 1.  the file path of the input file
 
-2.  a folder to save an output spreadsheet with the t-scores
+2.  where to export the csv file with t-scores
+
+3.  not to export the csv file
 
 ``` r
-library(here)
 library(SwanScorer)
 
 # Example of how to specify the input file
 swan_tscores <- get_swan_tscores(file = here("test_scores.csv"))
 
-# Example of how to automatically save a spreadsheet
-swan_tscores <- get_swan_tscores(output_folder = here())
+# Example of how to specify an output folder
+swan_tscores <- get_swan_tscores(output_folder = file.path("C:","Users",..."yourpath"))
+
+# Example of how to not export a csv file
+swan_tscores <- get_swan_tscores(output_folder = NULL)
 ```
 
 ## Understanding the Output
