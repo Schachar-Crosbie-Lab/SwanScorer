@@ -31,19 +31,6 @@ globalVariables(c("value",'swan_tot_gender_tscores','sd',
                   "swan_ia_gender_low", "swan_ia_gender_pred", "swan_ia_low", "swan_ia_pred",
                   "swan_ia_pro", "swan_low", "swan_pred", "swan_pro"))
 
-#### Document Internal Data ####
-#' Expected Column Types
-#'
-#' A data dictionary for expected column types in the import file
-#'
-#' @format ## `col_type`
-#' A data frame with 24 rows and 2 columns:
-#' \describe{
-#'   \item{column}{Column name}
-#'   \item{type}{Data class}
-#'   ...
-#' }
-"col_type"
 
 #### clean_file function ####
 #' @name clean_file
@@ -63,7 +50,6 @@ globalVariables(c("value",'swan_tot_gender_tscores','sd',
 #' @importFrom dpyr across
 #' @importFrom dplyr all_of
 #' @importFrom dplyr rename
-#' @importFrom utils capture.output
 #'
 #' @returns A clean data frame ready for t-scores
 #'

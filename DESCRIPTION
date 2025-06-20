@@ -22,7 +22,6 @@ Imports:
     lubridate,
     rio,
     stringr,
-    tidyr,
-    utils
+    tidyr
 Depends: 
     R (>= 3.5)
