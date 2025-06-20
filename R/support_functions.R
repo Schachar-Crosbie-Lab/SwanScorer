@@ -222,14 +222,10 @@ build_summary <- function(df = NULL) {
     dplyr::mutate(age18 = dplyr::case_when(age < 18 ~ age,
                                            age >= 18 ~ 18,
                                            T ~ age)) |>
-      # Update gender coding
-    dplyr::mutate(gender = as.character(gender)) |>
-    dplyr::mutate(gender = dplyr::case_when(gender %in% c("1","2") ~ gender,
-                                     T ~ NA_character_)) |>
-    dplyr::mutate(gender = as.numeric(gender)) |>
     # Use same codings as Annie's script
-    dplyr::mutate(female = dplyr::case_when(gender == 1 ~ 0,
-                                            gender == 2 ~ 1)) |>
+    dplyr::mutate(female = dplyr::case_when(as.character(gender) == "1" ~ 0,
+                                            as.character(gender) == "2" ~ 1,
+                                            T ~ NA)) |>
     dplyr::mutate(youth = dplyr::case_when(age < 12 ~ 0,
                                            age >= 12 ~ 1,
                                            T ~ NA)) |>
