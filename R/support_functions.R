@@ -92,35 +92,17 @@ clean_file <- function(file_path = NULL) {
                paste(missing_cols, collapse = ", ")))
   }
 
-  # Check for data types
-
-  df_type <- df |>
-    dplyr::summarise(dplyr::across(dplyr::everything(), class)) |>
-    dplyr::select(required_dem_cols, required_test_cols) |>
-    tidyr::pivot_longer(cols = dplyr::all_of(c(required_dem_cols,required_test_cols)),
-                        names_to = 'column',
-                        values_to = 'type') |>
-    dplyr::anti_join(col_type, by = c('column','type')) |>
-    dplyr::rename(current_type = type) |>
-    dplyr::left_join(col_type, by = 'column') |>
-    dplyr::rename(expected_type = type)
-
-  if(nrow(df_type) > 0){
-    stop(paste("There appears to an issue with the format of your data. Please correct the columns listed below. Be sure to check for unexpected characters... \n",
-               paste0(utils::capture.output(print(df_type)), collapse = "\n")))
-  }
-
-
-  # Check for impossible values
+  ##### Check for impossible values ###
   df_long <- df |>
     tidyr::pivot_longer(cols = dplyr::all_of(required_test_cols)) |>
-    dplyr::filter(value > 3 | value < -3)
+    dplyr::filter(!value %in% c(-3,-2,-1,0,1,2,3))
 
   if(nrow(df_long) > 0){
     stop(paste("There appear to be",nrow(df_long),"values above 3 or below -3 in the file. These are not possible in the SWAN test.",
                "Please correct or remove the rows from the filing before running the get_swan_tscores() function again."))
   }
 
+  # P_respondent
   if(any(!df$p_respondent %in% c(0,1))) {
 
     stop(paste(sum(!df$p_respondent %in% c(0,1)),"of your records do not have a 1 or 0 for p_respondent.",
@@ -128,19 +110,25 @@ clean_file <- function(file_path = NULL) {
                "Once all rows have been corrected try running the get_swan_tscores() function again. p_respondent is reqired to generate a t-score."))
   }
 
+  # Check
+  if(!class(df$age) %in% c('numeric','integer')){
+    stop(paste("It appears as though your age variable is not formatted as a number. Please remove any non-numeric characters from your age column.",
+               "Once all rows have been corrected try running the get_swan_tscores() function again. age is reqired to generate a t-score."))
+  }
+
   # Check that Age is formatted correctly
   if(any(df$age >= 19)){
-    stop(paste("Some of your records have an age above 18. T-scores are applicable only for individuals aged 5-18.",
+    stop(paste("Some of your records have an age of 19 or above. T-scores are applicable only for individuals aged 5-18.",
                "Please check that ages are correct and remove any records 19 or above before running the get_swan_tscores() function again."))
   }
 
   if(any(df$age < 5)){
     stop(paste("Some of your records have an age below 5. T-scores are applicable only for individuals aged 5-18.",
-               "Please check that ages are correct and remove any records below 5  before running the get_swan_tscores() function again."))
+               "Please check that ages are correct and remove any records below 5 before running the get_swan_tscores() function again."))
   }
 
   # Check gender
-  if(!any(unique(df$gender) %in% c('1','2') )){
+  if(!any(as.character(unique(df$gender)) %in% c('1','2'))){
     warning(paste("The package wasn't able to find any gender coded as 1 or 2, and therefore won't generate any gender-based t-scores. If you'd like to generate gender-based t-scores, gender should be coded as... \n",
                "1 = Boy \n",
                "2 = Girl \n"))
